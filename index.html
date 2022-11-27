@@ -9,18 +9,20 @@
 </head>
 <body>
     <h1 id="title">JavaScript Pop Quiz</h1>
-    <h2 id="timer">You have 60 seconds left!</h2>
-    <div class="container">
+    <div id="timer-container">
+        <h2 id="timer">You have 60 seconds left!</h2>
+    </div>
+    <div class="question-container">
         <h3 id="question"></h3>
-            <ol>
-                <li id="option-1" class="option"></li>
-                <li id="option-2" class="option"></li>
-                <li id="option-3" class="option"></li>
-                <li id="option-4" class="option"></li>
-            </ol>   
+        <ol>
+            <li id="option-1" class="option"></li>
+            <li id="option-2" class="option"></li>
+            <li id="option-3" class="option"></li>
+            <li id="option-4" class="option"></li>
+        </ol>   
     </div>
     <h4 id="score"></h4>
-    <h2 class="start-quiz count-down">Start Quiz</h2>
+    <h2 class="start-quiz count-down pulse">Start Quiz</h2>
     <hr>
     <div id="modes">
         <p id="light-mode">Light Mode</p>

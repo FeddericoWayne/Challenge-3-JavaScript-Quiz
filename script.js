@@ -2,6 +2,8 @@
 // Setting up basic question display format
 var startEl = document.querySelector(".start-quiz");
 var countDownEl = document.querySelector(".count-down");
+var pulse = document.querySelector(".pulse");
+var timerContainer = document.querySelector("#timer-container");
 var questionEl = document.querySelector("#question");
 var firstOption = document.querySelector("#option-1");
 var secondOption = document.querySelector("#option-2");
@@ -263,10 +265,15 @@ function nextQuestion(event) {
 
 };
 
+function pulseAlert() {
+    timerContainer.classList.toggle("pulse-alert");
+}
+
 
 // Event Listners
 startEl.addEventListener("click", showQuestion);
 countDownEl.addEventListener("click", countDown);
+pulse.addEventListener("click",pulseAlert);
 options[0].addEventListener("click", nextQuestion);
 options[1].addEventListener("click", nextQuestion);
 options[2].addEventListener("click", nextQuestion);
