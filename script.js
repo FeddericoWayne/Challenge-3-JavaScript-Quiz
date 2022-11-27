@@ -32,7 +32,7 @@ var correctAnswer = [thirdOption, secondOption, fourthOption, thirdOption, secon
 
 // List of Questions
 var question1 = {
-    question: "What is the main purpose of JS?",
+    question: "What is the main purpose of JavaScript?",
     option1: "To style the html.",
     option2: "To build the structure of the webpage.",
     option3: "To add interactivity to the webpage.",

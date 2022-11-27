@@ -1,0 +1,32 @@
+
+/* CSS Variables */
+:root {
+    --salmon: #ff8b94;
+    --rosy: #ffaaa5;
+    --nude: #ffd3b6;
+    --moss: #dcecd1;
+    --glade: #a8e6cf;
+    --shade: rgb(168, 168, 168);
+    --spotlight: #fff18b;
+    --midnight: #000851;
+}
+
+/* Universal Styling */
+body {
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    background-color: var(--spotlight);
+    font-family: monospace;
+}
+
+/* To Toggle Dark-Mode */
+.dark-mode {
+    background-color: var(--midnight);
+    color: var(--spotlight);
+}
+
+
+
