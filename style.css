@@ -276,6 +276,11 @@ ol {
 #modes {
     display: flex;
     flex-direction: row;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 25px;
+    padding: 0 15px;
+    column-gap: 25px;
+    margin-top: 15px;
     
 }
 
