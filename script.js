@@ -10,6 +10,14 @@ var fourthOption = document.querySelector("#option-4");
 var options = document.querySelectorAll("li");
 var optionContainer = document.querySelector("ol");
 
+function refresh() {
+    location.reload();
+}
+
+// for Score Keeping
+var scoreEl = document.querySelector("#score");
+var score=0;
+
 // Timer Variables
 var timer = document.querySelector("#timer");
 var timeLeft = 60;
@@ -20,10 +28,9 @@ firstOption.textContent = "After you click on the Start Quiz button above, you h
 secondOption.innerHTML = "If you answer a question correctly, 5 points will be added to your score.<br>If you answer a question incorrectly, you will lose 5 seconds from the countdown.";
 thirdOption.textContent = "If you finish answering all 20 questions before time is up, you win!";
 fourthOption.textContent = "If you don't finish answering all 20 questions before the time is up, you lose!";
+scoreEl.textContent = "Your Score: "+score;
 
-// for Score Keeping
-var scoreEl = document.querySelector("#score");
-var score=0;
+
 
 
 
@@ -241,10 +248,12 @@ function countDown() {
 function nextQuestion(event) {
 
    if (event.target === correctAnswer[x]) {
+        startEl.textContent = "Bingo!";
         score+=5;
         scoreEl.textContent = "Your Score: "+score;
 
     } else {
+        startEl.textContent = "Womp Womp!";
         scoreEl.textContent = "Your Score: "+score;
         timeLeft-=5;
     }

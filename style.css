@@ -28,5 +28,75 @@ body {
     color: var(--spotlight);
 }
 
+hr {
+    background-color: var(--shade);
+    width: 65%;
+    height: 3px;
+    border-radius: 3px;
+}
+
+/* Title Styling */
+#title {
+    color: white;
+    background-color: var(--glade);
+    border: 10px solid var(--moss);
+    border-radius: 35px;
+    padding: 15px 20px;
+    box-shadow: 0 0 0px 10px white;
+}
+
+/* Start Button Styling */
+.start-quiz {
+    color: white;
+    background-color: var(--salmon);
+    border: 10px solid var(--rosy);
+    border-radius: 35px;
+    padding: 15px 20px;
+    box-shadow: 0 0 0px 10px var(--nude);
+    transition-duration: 1s;
+    transition-property: color, background-color, border, box-shadow;
+}
+
+.start-quiz:hover {
+    cursor: pointer;
+    color: var(--salmon);
+    background-color: var(--nude);
+    border: 10px solid var(--rosy);
+    border-radius: 35px;
+    padding: 15px 20px;
+    box-shadow: 0 0 0px 10px white;
+    
+}
+.start-quiz:active {
+    transform: translateY(5px);
+
+
+}
+
+
+/* Question Section Styling */
+.container {
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 10px 15px;
+    border-radius: 35px;
+    width: 80%;
+    margin-bottom: 20px;
+}
+
+#question {
+
+
+}
+
+#timer {
+    width: 50%;
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 25px 15px;
+    border-radius: 35px;
+    text-align: center;
+    
+
+}
+
 
 
