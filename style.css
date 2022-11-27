@@ -67,13 +67,13 @@ hr {
     background-color: var(--babyblue);
     border-radius: 35px;
     margin: 25px auto;
-    animation-name: pulse;
+    animation-name: pulse-blue;
     animation-duration: 1s;
     animation-iteration-count: infinite;
 
 }
 
-@keyframes pulse {
+@keyframes pulse-blue {
     0% {
         transform: scale(0.95);
         box-shadow: 0 0 0 0 rgb(165, 207, 255, 0.7);
@@ -85,13 +85,31 @@ hr {
     }
 
     100% {
-        transformL scale(0.95);
+        transform: scale(0.95);
         box-shadow: 0 0 0 0 rgb(165, 207, 255, 0);
     }
     
 }
 
 /* Start Button Styling */
+@keyframes pulse-pink {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(255, 165, 207, 0.7);
+    }
+
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 15px  rgb(165, 207, 255, 0);
+    }
+
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgb(165, 207, 255, 0);
+    }
+    
+}
+
 .start-quiz {
     color: white;
     background-color: var(--salmon);
@@ -99,6 +117,9 @@ hr {
     border-radius: 35px;
     padding: 15px 20px;
     box-shadow: 0 0 0px 10px var(--nude);
+    animation-name: pulse-pink;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
     transition-duration: 1s;
     transition-property: color, background-color, border, box-shadow;
 }
@@ -114,6 +135,7 @@ hr {
     
 }
 .start-quiz:active {
+    animation:none;
     transform: translateY(5px);
     transition: none;
     cursor: pointer;

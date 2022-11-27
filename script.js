@@ -201,6 +201,7 @@ var question20 = {
 // For Displaying Questions Sequentially, One at a Time
 function showQuestion() {
 
+    startEl.setAttribute("style","display:none;");
     questionEl.textContent = questionList[x].question;
     options[0].textContent = questionList[x].option1;
     options[1].textContent = questionList[x].option2;
