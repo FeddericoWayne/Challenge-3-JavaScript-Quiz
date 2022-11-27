@@ -27,7 +27,7 @@ var timeLeft = 60;
 
 // Game Rules
 timer.textContent = "Here are the rules:";
-questionEl.innerHTML = "After you click on the Start Quiz button below, <br>you'll have 60 seconds to answer the following 20 questions by clicking on the options.<br>If you answer a question correctly, 5 points will be added to your score.<br>If you answer a question incorrectly, you will lose 5 seconds from the countdown.<br>If you finish answering all 20 questions before time is up, you win!<br>If you don't finish answering all 20 questions before the time is up, you lose!"
+questionEl.innerHTML = "After you click on the Start Quiz button below, <br>you'll have 60 seconds to answer the following 20 questions by clicking on the options.<br>If you answer a question correctly, 5 points will be added to your score.<br>If you answer a question incorrectly, you will lose 5 seconds from the countdown.<br>If you finish answering all 20 questions before time is up, you win!<br>If you don't finish answering all 20 questions before time is up, you lose!"
 scoreEl.textContent = "Your Score: "+score;
 
 
