@@ -11,6 +11,7 @@ var thirdOption = document.querySelector("#option-3");
 var fourthOption = document.querySelector("#option-4");
 var options = document.querySelectorAll("li");
 var optionContainer = document.querySelector("ol");
+var optionList = document.querySelector(".options");
 
 function refresh() {
     location.reload();
@@ -26,14 +27,8 @@ var timeLeft = 60;
 
 // Game Rules
 timer.textContent = "Here are the rules:";
-firstOption.textContent = "After you click on the Start Quiz button above, you have 60 seconds to answer the following 20 questions.";
-secondOption.innerHTML = "If you answer a question correctly, 5 points will be added to your score.<br>If you answer a question incorrectly, you will lose 5 seconds from the countdown.";
-thirdOption.textContent = "If you finish answering all 20 questions before time is up, you win!";
-fourthOption.textContent = "If you don't finish answering all 20 questions before the time is up, you lose!";
+questionEl.innerHTML = "After you click on the Start Quiz button above, <br>you have 60 seconds to answer the following 20 questions.<br>If you answer a question correctly, 5 points will be added to your score.<br>If you answer a question incorrectly, you will lose 5 seconds from the countdown.<br>If you finish answering all 20 questions before time is up, you win!<br>If you don't finish answering all 20 questions before the time is up, you lose!"
 scoreEl.textContent = "Your Score: "+score;
-
-
-
 
 
 // Assigning Correct Answers to an Array
@@ -269,11 +264,16 @@ function pulseAlert() {
     timerContainer.classList.toggle("pulse-alert");
 }
 
+function showOptions() {
+    optionContainer.classList.add("show-options");
+}
+
 
 // Event Listners
 startEl.addEventListener("click", showQuestion);
 countDownEl.addEventListener("click", countDown);
 pulse.addEventListener("click",pulseAlert);
+optionList.addEventListener("click", showOptions);
 options[0].addEventListener("click", nextQuestion);
 options[1].addEventListener("click", nextQuestion);
 options[2].addEventListener("click", nextQuestion);

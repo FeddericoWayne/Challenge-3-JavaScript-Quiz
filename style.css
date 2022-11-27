@@ -143,18 +143,26 @@ hr {
 /* Question and Option Styling */
 #question {
     color: var(--midnight);
+    text-align: center;
+    line-height: 2rem;
 
 }
 
 ol {
+    display:none;
     list-style-type: none;
     padding-inline-start: 0;
+}
+
+.show-options {
+    display:flex;
+    flex-direction: column;
 }
 
 #option-1 {
     cursor: pointer;
     color: var(--midnight);
-    margin: 22px auto;
+    margin: 10px auto;
     padding: 5px 15px;
     background-color: var(--lavendar);
     border-radius: 25px;
@@ -179,7 +187,7 @@ ol {
 #option-2 {
     cursor: pointer;
     color: var(--midnight);
-    margin: 22px auto;
+    margin: 10px auto;
     padding: 5px 15px;
     background-color: var(--babyblue);
     border-radius: 25px;
@@ -201,7 +209,7 @@ ol {
 #option-3 {
     cursor: pointer;
     color: var(--midnight);
-    margin: 22px auto;
+    margin: 10px auto;
     padding: 5px 15px;
     background-color: var(--moss);
     border-radius: 25px;
@@ -223,7 +231,7 @@ ol {
 #option-4 {
     cursor: pointer;
     color: var(--midnight);
-    margin: 22px auto;
+    margin: 10px auto;
     padding: 5px 15px;
     background-color: var(--nude);
     border-radius: 25px;
