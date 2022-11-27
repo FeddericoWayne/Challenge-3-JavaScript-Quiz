@@ -142,8 +142,7 @@ hr {
 
 /* Question and Option Styling */
 #question {
-
-
+    color: var(--midnight);
 
 }
 
@@ -160,9 +159,22 @@ ol {
     background-color: var(--lavendar);
     border-radius: 25px;
     width: fit-content;
+    transition-duration: 0.5s;
+    transition-property: background-color, color, box-shadow;
 
 
 }
+
+#option-1:hover {
+    background-color: white;
+    color: black;
+    box-shadow: 0 0 5px 5px var(--shade);
+}
+
+#option-1:active {
+    transform: translateY(3px);
+}
+
 
 #option-2 {
     cursor: pointer;
@@ -172,7 +184,18 @@ ol {
     background-color: var(--babyblue);
     border-radius: 25px;
     width: fit-content;
+    transition-duration: 0.5s;
+    transition-property: background-color, color, box-shadow;
+}
 
+#option-2:hover {
+    background-color: white;
+    color: black;
+    box-shadow: 0 0 5px 5px var(--shade);
+}
+
+#option-2:active {
+    transform: translateY(3px);
 }
 
 #option-3 {
@@ -183,9 +206,20 @@ ol {
     background-color: var(--moss);
     border-radius: 25px;
     width: fit-content;
-
+    transition-duration: 0.5s;
+    transition-property: background-color, color, box-shadow;
 }
- 
+
+#option-3:hover {
+    background-color: white;
+    color: black;
+    box-shadow: 0 0 5px 5px var(--shade);
+}
+
+#option-3:active {
+    transform: translateY(3px);
+}
+
 #option-4 {
     cursor: pointer;
     color: var(--midnight);
@@ -194,6 +228,18 @@ ol {
     background-color: var(--nude);
     border-radius: 25px;
     width: fit-content;
+    transition-duration: 0.5s;
+    transition-property: background-color, color, box-shadow;
+}
+
+#option-4:hover {
+    background-color: white;
+    color: black;
+    box-shadow: 0 0 5px 5px var(--shade);
+}
+
+#option-4:active {
+    transform: translateY(3px);
 }
 
 
