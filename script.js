@@ -3,6 +3,7 @@
 var startEl = document.querySelector(".start-quiz");
 var countDownEl = document.querySelector(".count-down");
 var pulse = document.querySelector(".pulse");
+var save = document.querySelector(".save-score");
 var timerContainer = document.querySelector("#timer-container");
 var questionEl = document.querySelector("#question");
 var firstOption = document.querySelector("#option-1");
@@ -261,8 +262,6 @@ function countDown() {
             timer.setAttribute("style","color: #ff0000; font-size: 1.7rem; font-weight: bolder;");
         }
 
-     
-
         if (timeLeft <= -2) {
             clearInterval(noTimeLeft,1000);
             timer.textContent = "Game Over! You ran out of time!"
@@ -272,7 +271,12 @@ function countDown() {
             options[1].remove();
             options[2].remove();
             options[3].remove();
+            startEl.removeAttribute("style","display:none;");
+            startEl.textContent = "Save Your Score";
         }
+
+        
+
 
 
 
@@ -293,10 +297,19 @@ function nextQuestion(event) {
         x++;
         showQuestion();
 
-    } else if (x===10) {
-        timer.textContent = "BOOYAH!"
-        /* stop timer here */
+    } else if (x===9) {
+        timer.remove();
+        timerContainer.textContent = "Booyah!";
+        timerContainer.setAttribute("style","animation: none; font-size: 2rem;");
         questionEl.textContent="Congrats! You finished all 20 questions in time!";
+        options[0].remove();
+        options[1].remove();
+        options[2].remove();
+        options[3].remove();
+        startEl.removeAttribute("style","display:none;");
+        startEl.textContent = "Save Your Score";
+
+        
         
 
     } else {
@@ -331,11 +344,17 @@ function dayTime() {
     body.classList.remove("dark-mode");
 }
 
+function saveScore() {
+
+
+}
+
 
 // Event Listners
 startEl.addEventListener("click", showQuestion);
 countDownEl.addEventListener("click", countDown);
 pulse.addEventListener("click",pulseAlert);
+save.addEventListener("click",saveScore);
 optionList.addEventListener("click", showOptions);
 options[0].addEventListener("click", nextQuestion);
 options[1].addEventListener("click", nextQuestion);
