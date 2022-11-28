@@ -244,21 +244,22 @@ function countDown() {
         }
 
         if (timeLeft <= 1) {
-            timer.setAttribute("style","color: #fc2828; font-size: 1.5rem; font-weight: bolder;");
+            timer.setAttribute("style","color: #fc2828; font-size: 1.4rem; font-weight: bolder;");
         }
 
         if (timeLeft <= 0) { 
-            timer.setAttribute("style","color: #fd1717; font-size: 1.6rem; font-weight: bolder;");
+            timer.setAttribute("style","color: #fd1717; font-size: 1.5rem; font-weight: bolder;");
         }
 
         if (timeLeft <= -1) {
-            timer.setAttribute("style","color: #ff0000; font-size: 1.7rem; font-weight: bolder;");
+            timer.setAttribute("style","color: #ff0000; font-size: 1.6rem; font-weight: bolder;");
         }
 
         if (timeLeft <= -2) {
             clearInterval(noTimeLeft,1000);
             timer.textContent = "Game Over! You ran out of time!"
             timerContainer.setAttribute("style","animation:none;");
+            questionContainer.setAttribute("class","question-container");
             questionEl.remove();
             options[0].remove();
             options[1].remove();
@@ -295,6 +296,8 @@ function nextQuestion(event) {
         timerContainer.textContent = "Booyah!";
         timerContainer.setAttribute("style","animation: none; font-size: 2rem;");
         questionEl.textContent="Congrats! You finished all 20 questions in time!";
+        questionEl.setAttribute("style","font-size: 2rem;");
+        questionContainer.setAttribute("class","question-container");
         options[0].remove();
         options[1].remove();
         options[2].remove();
@@ -306,7 +309,8 @@ function nextQuestion(event) {
         
 
     } else {
-
+        //error when the last answer is answered correctly!
+        
         questionContainer.setAttribute("class","wrong-answer");
         scoreEl.textContent = "Your Score: "+score;
         timeLeft-=5;
