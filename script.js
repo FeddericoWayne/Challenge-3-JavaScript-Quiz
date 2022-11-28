@@ -288,34 +288,49 @@ function nextQuestion(event) {
         questionContainer.setAttribute("class","right-answer");
         score+=5;
         scoreEl.textContent = "Your Score: "+score;
+
+        if (x===9) {
+            timer.remove();
+            timerContainer.textContent = "Booyah!";
+            timerContainer.setAttribute("style","animation: none; font-size: 2rem;");
+            questionEl.textContent="Congrats! You finished all 20 questions in time!";
+            questionEl.setAttribute("style","font-size: 2rem;");
+            questionContainer.setAttribute("class","question-container");
+            options[0].remove();
+            options[1].remove();
+            options[2].remove();
+            options[3].remove();
+            //startEl.removeAttribute("style","display:none;");
+            //startEl.textContent = "Save Your Score";
+        };
+
         x++;
         showQuestion();
 
-    } else if (x===9) {
-        timer.remove();
-        timerContainer.textContent = "Booyah!";
-        timerContainer.setAttribute("style","animation: none; font-size: 2rem;");
-        questionEl.textContent="Congrats! You finished all 20 questions in time!";
-        questionEl.setAttribute("style","font-size: 2rem;");
-        questionContainer.setAttribute("class","question-container");
-        options[0].remove();
-        options[1].remove();
-        options[2].remove();
-        options[3].remove();
-        //startEl.removeAttribute("style","display:none;");
-        //startEl.textContent = "Save Your Score";
-
-        
-        
-
     } else {
-        //error when the last answer is answered correctly!
-        
+    
         questionContainer.setAttribute("class","wrong-answer");
         scoreEl.textContent = "Your Score: "+score;
         timeLeft-=5;
+
+        if (x===9) {
+            timer.remove();
+            timerContainer.textContent = "Booyah!";
+            timerContainer.setAttribute("style","animation: none; font-size: 2rem;");
+            questionEl.textContent="Congrats! You finished all 20 questions in time!";
+            questionEl.setAttribute("style","font-size: 2rem;");
+            questionContainer.setAttribute("class","question-container");
+            options[0].remove();
+            options[1].remove();
+            options[2].remove();
+            options[3].remove();
+            //startEl.removeAttribute("style","display:none;");
+            //startEl.textContent = "Save Your Score";
+        };
+
         x++;
         showQuestion();
+
     }
    
 
