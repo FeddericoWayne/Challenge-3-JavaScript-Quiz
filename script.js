@@ -37,8 +37,6 @@ questionEl.innerHTML = "After you click on the Start Quiz button below, <br>you'
 scoreEl.textContent = "Your Score: "+score;
 
 
-// Assigning Correct Answers to an Array
-var correctAnswer = [thirdOption, secondOption, fourthOption, thirdOption, secondOption, fourthOption, firstOption,thirdOption, thirdOption, secondOption, ];
 
 // List of Questions
 var question1 = {
@@ -204,6 +202,16 @@ var question20 = {
 // Randomize the Questions
 
 
+// Assigning all the Questions to an Array
+var questionList = [];
+questionList = [question1,question2,question3,question4,question5,question6,question7,question8,question9,question10/*,question11,question12,question13,question14,question15,question16,question17,question18,question19,question20*/];
+var x = 0;
+
+// Assigning Correct Answers to an Array
+var correctAnswer = [thirdOption, secondOption, fourthOption, thirdOption, secondOption, fourthOption, firstOption,thirdOption, thirdOption, secondOption, ];
+
+
+
 // For Displaying Questions Sequentially, One at a Time
 function showQuestion() {
 
@@ -213,16 +221,12 @@ function showQuestion() {
     options[1].textContent = questionList[x].option2;
     options[2].textContent = questionList[x].option3;
     options[3].textContent = questionList[x].option4;
-
     scoreEl.textContent = "Your Score: "+score;
 
 
 };
 
-// Assigning all the Questions to an Array
-var questionList = [];
-questionList = [question1,question2,question3,question4,question5,question6,question7,question8,question9,question10,/*question11,question12,question13,question14,question15,question16,question17,question18,question19,question20*/];
-var x = 0;
+
 
 // Countdown Sequence
 function countDown() {
@@ -257,6 +261,8 @@ function countDown() {
             timer.setAttribute("style","color: #ff0000; font-size: 1.7rem; font-weight: bolder;");
         }
 
+     
+
         if (timeLeft <= -2) {
             clearInterval(noTimeLeft,1000);
             timer.textContent = "Game Over! You ran out of time!"
@@ -267,29 +273,47 @@ function countDown() {
             options[2].remove();
             options[3].remove();
         }
+
+
+
+
     };
     
 };
+
+
 
 
 // For Continuing to the Next Question and Keeping Count of Total Score
 function nextQuestion(event) {
 
    if (event.target === correctAnswer[x]) {
-        startEl.textContent = "Bingo!";
         score+=5;
         scoreEl.textContent = "Your Score: "+score;
+        x++;
+        showQuestion();
+
+    } else if (x===10) {
+        timer.textContent = "BOOYAH!"
+        /* stop timer here */
+        questionEl.textContent="Congrats! You finished all 20 questions in time!";
+        
 
     } else {
-        startEl.textContent = "Womp Womp!";
         scoreEl.textContent = "Your Score: "+score;
         timeLeft-=5;
+        x++;
+        showQuestion();
     }
    
-    x++;
-    showQuestion();
+
+
+
+
 
 };
+
+
 
 function pulseAlert() {
     timerContainer.classList.toggle("pulse-alert");
