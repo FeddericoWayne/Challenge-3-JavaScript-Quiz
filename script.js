@@ -12,6 +12,12 @@ var fourthOption = document.querySelector("#option-4");
 var options = document.querySelectorAll("li");
 var optionContainer = document.querySelector("ol");
 var optionList = document.querySelector(".options");
+var body = document.querySelector("body");
+var darkMode = document.querySelector("#dark-mode");
+var lightMode = document.querySelector("#light-mode");
+
+
+
 
 function refresh() {
     location.reload();
@@ -227,10 +233,34 @@ function countDown() {
         timer.textContent = "You have "+timeLeft+" seconds left!";
         timeLeft--;
 
+        if (timeLeft <= 4) {
+            timer.setAttribute("style","color: #ff8b94; font-size: 1.3rem; font-weight: bolder;");
+        } 
+
+        if (timeLeft <= 3) {
+            timer.setAttribute("style","color: #f65f5f; font-size: 1.3rem; font-weight: bolder;");
+        }
+
+        if (timeLeft <= 2) {
+            timer.setAttribute("style","color: #fc3c3c; font-size: 1.4rem; font-weight: bolder;");
+        }
+
+        if (timeLeft <= 1) {
+            timer.setAttribute("style","color: #fc2828; font-size: 1.5rem; font-weight: bolder;");
+        }
+
+        if (timeLeft <= 0) { 
+            timer.setAttribute("style","color: #fd1717; font-size: 1.6rem; font-weight: bolder;");
+        }
+
+        if (timeLeft <= -1) {
+            timer.setAttribute("style","color: #ff0000; font-size: 1.7rem; font-weight: bolder;");
+        }
+
         if (timeLeft <= -2) {
             clearInterval(noTimeLeft,1000);
-            timer.remove();''
-            startEl.textContent = "Game Over! You ran out of time!";
+            timer.textContent = "Game Over! You ran out of time!"
+            timerContainer.setAttribute("style","animation:none;");
             questionEl.remove();
             options[0].remove();
             options[1].remove();
@@ -269,6 +299,14 @@ function showOptions() {
     optionContainer.classList.add("show-options");
 }
 
+function nightTime() {
+    body.classList.add("dark-mode"); 
+}
+
+function dayTime() {
+    body.classList.remove("dark-mode");
+}
+
 
 // Event Listners
 startEl.addEventListener("click", showQuestion);
@@ -279,6 +317,8 @@ options[0].addEventListener("click", nextQuestion);
 options[1].addEventListener("click", nextQuestion);
 options[2].addEventListener("click", nextQuestion);
 options[3].addEventListener("click", nextQuestion);
+darkMode.addEventListener("click",nightTime);
+lightMode.addEventListener("click",dayTime);
 
 
 

@@ -1,7 +1,7 @@
 
 /* CSS Variables */
 :root {
-    --salmon: #ff8b94;
+    --salmon: #ff8b8b;
     --rosy: #ffaaa5;
     --nude: #ffd3b6;
     --moss: #dcecd1;
@@ -10,24 +10,20 @@
     --spotlight: #fff18b;
     --babyblue: #a5cfff;
     --lavendar: #9a8bff;
+    --dusk: #385176;
     --midnight: #000851;
 }
 
 /* Universal Styling */
 body {
-
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
     background-color: var(--spotlight);
     font-family: monospace;
-}
-
-/* To Toggle Dark-Mode */
-.dark-mode {
-    background-color: var(--midnight);
-    color: var(--spotlight);
+    transition-duration: 1s;
+    transition-property: background-color;
 }
 
 hr {
@@ -45,6 +41,8 @@ hr {
     border-radius: 35px;
     padding: 15px 20px;
     box-shadow: 0 0 0px 10px white;
+    transition-duration: 1s;
+    transition-property: color,background-color,box-shadow;
 }
 
 /* Timer Styling */
@@ -56,6 +54,8 @@ hr {
     background-color: var(--babyblue);
     border-radius: 35px;
     margin: 25px auto;
+    transition-duration: 1s;
+    transition-property: background-color,color;
 
 }
 
@@ -149,7 +149,7 @@ hr {
 }
 
 /* Question Section Styling */
-.question-container {
+#question-container {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -160,6 +160,8 @@ hr {
     border-radius: 35px;
     width: 80%;
     margin-bottom: 20px;
+    transition-duration: 1s;
+    transition-property: background-color, color;
 }
 
 /* Question and Option Styling */
@@ -167,7 +169,8 @@ hr {
     color: var(--midnight);
     text-align: center;
     line-height: 2rem;
-
+    transition-duration: 1s;
+    transition-property: color;
 }
 
 ol {
@@ -272,17 +275,121 @@ ol {
     transform: translateY(3px);
 }
 
+#score {
+    color: var(--midnight);
+    font-size: 1.5rem;
+    margin: 10px auto;
+    transition-duration: 1s;
+    transition-property: color;
+}
 
+/* To Toggle Dark-Mode */
 #modes {
     display: flex;
     flex-direction: row;
+    color: var(--midnight);
     background-color: rgba(255, 255, 255, 0.6);
     border-radius: 25px;
-    padding: 0 15px;
-    column-gap: 25px;
+    padding: 0;
+    column-gap: 5px;
     margin-top: 15px;
-    
 }
+
+.dark-mode {
+    background-color: var(--midnight);
+    color: white;
+}
+
+.dark-mode #title {
+    color: white;
+    background-color: var(--midnight);
+    border: 10px solid var(--lavendar);
+    border-radius: 35px;
+    padding: 15px 20px;
+    box-shadow: 0 0 0px 10px white;
+}
+
+.dark-mode #timer-container {
+    color: white;
+    padding: 10px 15px;
+    text-align: center;
+    width: 50%;
+    background-color: var(--dusk);
+    border-radius: 35px;
+    margin: 25px auto;
+
+}
+
+.dark-mode #question-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    min-height: 30vh;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 10px 15px;
+    border-radius: 35px;
+    width: 80%;
+    margin-bottom: 20px;
+}
+
+.dark-mode #question {
+    color: white;
+    text-align: center;
+    line-height: 2rem;
+
+}
+
+.dark-mode #score {
+    color: white;
+}
+
+.dark-mode #light-mode {
+    cursor: pointer;
+    color: white;
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 10px 15px;
+    border: 5px solid rgba(255, 255, 255, 0);
+    border-radius: 25px;
+    margin: 0;
+    transition-duration: 1s;
+    transition-property: color, background-color, box-shadow;
+}
+
+.dark-mode #dark-mode {
+    cursor: pointer;
+    color: white;
+    background-color: var(--midnight);
+    padding: 10px 15px;
+    border: 5px solid var(--shade);
+    border-radius: 25px;
+    margin: 0;
+    transition-duration: 1s;
+    transition-property: color, background-color, box-shadow;
+}
+
+#dark-mode {
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 10px 15px;
+    border: 5px solid rgba(255, 255, 255, 0);
+    border-radius: 25px;
+    margin: 0;
+    transition-duration: 1s;
+    transition-property: color, background-color, box-shadow;
+}
+
+#light-mode {
+    cursor: pointer;
+    background-color: var(--spotlight);
+    padding: 10px 15px;
+    border: 5px solid var(--shade);
+    border-radius: 25px;
+    margin: 0;
+    transition-duration: 1s;
+    transition-property: color, background-color, box-shadow;
+}
+
 
 
 
