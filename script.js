@@ -1,10 +1,10 @@
-
 // Setting up basic question display format
 var startEl = document.querySelector(".start-quiz");
 var countDownEl = document.querySelector(".count-down");
 var pulse = document.querySelector(".pulse");
-var save = document.querySelector(".save-score");
+//var save = document.querySelector(".save-score");
 var timerContainer = document.querySelector("#timer-container");
+var questionContainer = document.querySelector(".question-container");
 var questionEl = document.querySelector("#question");
 var firstOption = document.querySelector("#option-1");
 var secondOption = document.querySelector("#option-2");
@@ -18,11 +18,6 @@ var darkMode = document.querySelector("#dark-mode");
 var lightMode = document.querySelector("#light-mode");
 
 
-
-
-function refresh() {
-    location.reload();
-}
 
 // for Score Keeping
 var scoreEl = document.querySelector("#score");
@@ -212,7 +207,6 @@ var x = 0;
 var correctAnswer = [thirdOption, secondOption, fourthOption, thirdOption, secondOption, fourthOption, firstOption,thirdOption, thirdOption, secondOption, ];
 
 
-
 // For Displaying Questions Sequentially, One at a Time
 function showQuestion() {
 
@@ -226,7 +220,6 @@ function showQuestion() {
 
 
 };
-
 
 
 // Countdown Sequence
@@ -271,8 +264,8 @@ function countDown() {
             options[1].remove();
             options[2].remove();
             options[3].remove();
-            startEl.removeAttribute("style","display:none;");
-            startEl.textContent = "Save Your Score";
+            //startEl.removeAttribute("style","display:none;");
+            //startEl.textContent = "Save Your Score";
         }
 
         
@@ -286,12 +279,12 @@ function countDown() {
 };
 
 
-
-
 // For Continuing to the Next Question and Keeping Count of Total Score
 function nextQuestion(event) {
 
    if (event.target === correctAnswer[x]) {
+
+        questionContainer.setAttribute("class","right-answer");
         score+=5;
         scoreEl.textContent = "Your Score: "+score;
         x++;
@@ -306,13 +299,15 @@ function nextQuestion(event) {
         options[1].remove();
         options[2].remove();
         options[3].remove();
-        startEl.removeAttribute("style","display:none;");
-        startEl.textContent = "Save Your Score";
+        //startEl.removeAttribute("style","display:none;");
+        //startEl.textContent = "Save Your Score";
 
         
         
 
     } else {
+
+        questionContainer.setAttribute("class","wrong-answer");
         scoreEl.textContent = "Your Score: "+score;
         timeLeft-=5;
         x++;
@@ -344,17 +339,15 @@ function dayTime() {
     body.classList.remove("dark-mode");
 }
 
-function saveScore() {
 
-
-}
+//function saveScore() {}
 
 
 // Event Listners
 startEl.addEventListener("click", showQuestion);
 countDownEl.addEventListener("click", countDown);
 pulse.addEventListener("click",pulseAlert);
-save.addEventListener("click",saveScore);
+//save.addEventListener("click",saveScore);
 optionList.addEventListener("click", showOptions);
 options[0].addEventListener("click", nextQuestion);
 options[1].addEventListener("click", nextQuestion);

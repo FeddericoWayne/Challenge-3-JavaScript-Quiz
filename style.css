@@ -137,7 +137,6 @@ hr {
 .start-quiz:active {
     animation:none;
     transform: translateY(5px);
-    transition: none;
     cursor: pointer;
     color: var(--shade);
     background-color: white;
@@ -149,13 +148,44 @@ hr {
 }
 
 /* Question Section Styling */
-#question-container {
+.question-container {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     align-content: center;
     min-height: 30vh;
     background-color: rgba(255, 255, 255, 0.6);
+    padding: 10px 15px;
+    border-radius: 35px;
+    width: 80%;
+    margin-bottom: 20px;
+    transition-duration: 1s;
+    transition-property: background-color, color;
+}
+
+.right-answer {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    min-height: 30vh;
+    background-color: var(--glade);
+    padding: 10px 15px;
+    border-radius: 35px;
+    width: 80%;
+    margin-bottom: 20px;
+    transition-duration: 1s;
+    transition-property: background-color, color;
+
+}
+
+.wrong-answer {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    min-height: 30vh;
+    background-color: var(--salmon);
     padding: 10px 15px;
     border-radius: 35px;
     width: 80%;
@@ -283,6 +313,8 @@ ol {
     transition-property: color;
 }
 
+
+
 /* To Toggle Dark-Mode */
 #modes {
     display: flex;
@@ -320,7 +352,7 @@ ol {
 
 }
 
-.dark-mode #question-container {
+.dark-mode .question-container {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -331,6 +363,38 @@ ol {
     border-radius: 35px;
     width: 80%;
     margin-bottom: 20px;
+    transition-duration: 1s;
+    transition-property: background-color, color;
+}
+
+.dark-mode .right-answer {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    min-height: 30vh;
+    background-color: #34411f;
+    padding: 10px 15px;
+    border-radius: 35px;
+    width: 80%;
+    margin-bottom: 20px;
+    transition-duration: 1s;
+    transition-property: background-color, color;
+}
+
+.dark-mode .wrong-answer {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    min-height: 30vh;
+    background-color: #972f3f;
+    padding: 10px 15px;
+    border-radius: 35px;
+    width: 80%;
+    margin-bottom: 20px;
+    transition-duration: 1s;
+    transition-property: background-color, color;
 }
 
 .dark-mode #question {
