@@ -17,9 +17,34 @@ var body = document.querySelector("body");
 var darkMode = document.querySelector("#dark-mode");
 var lightMode = document.querySelector("#light-mode");
 
+// Sound Effects
+var clickStart = new Audio();
+clickStart.src = "./Assets/Sound Effects/Start game.wav";
+
+var gameOverSound = new Audio();
+gameOverSound.src = "./Assets/Sound Effects/Out of Time.wav";
+
+var bingo = new Audio();
+bingo.src = "./Assets/Sound Effects/Correct.wav";
+
+var womp = new Audio();
+womp.src = "./Assets/Sound Effects/Wrong.wav";
+
+var booyah = new Audio();
+booyah.src = "./Assets/Sound Effects/Win Game.wav";
+
+var fiveSeconds = new Audio();
+fiveSeconds.src = "Assets/Sound Effects/count down.wav";
+
+var morning = new Audio();
+morning.src = "Assets/Sound Effects/light-mode.wav";
+
+var night = new Audio();
+night.src = "Assets/Sound Effects/dark-mode.wav";
 
 
-// for Score Keeping
+
+// For Score Keeping
 var scoreEl = document.querySelector("#score");
 var score=0;
 
@@ -210,6 +235,7 @@ var correctAnswer = [thirdOption, secondOption, fourthOption, thirdOption, secon
 // For Displaying Questions Sequentially, One at a Time
 function showQuestion() {
 
+
     startEl.setAttribute("style","display:none;");
     questionEl.textContent = questionList[x].question;
     options[0].textContent = questionList[x].option1;
@@ -232,10 +258,12 @@ function countDown() {
         timeLeft--;
 
         if (timeLeft <= 4) {
+            
             timer.setAttribute("style","color: #ff8b94; font-size: 1.3rem; font-weight: bolder;");
         } 
 
         if (timeLeft <= 3) {
+            fiveSeconds.play();
             timer.setAttribute("style","color: #f65f5f; font-size: 1.3rem; font-weight: bolder;");
         }
 
@@ -257,6 +285,7 @@ function countDown() {
 
         if (timeLeft <= -2) {
             clearInterval(noTimeLeft,1000);
+            gameOverSound.play();
             timer.textContent = "Game Over! You ran out of time!"
             timerContainer.setAttribute("style","animation:none;");
             questionContainer.setAttribute("class","question-container");
@@ -270,11 +299,6 @@ function countDown() {
         }
 
         
-
-
-
-
-
     };
     
 };
@@ -285,12 +309,14 @@ function nextQuestion(event) {
 
    if (event.target === correctAnswer[x]) {
 
+        bingo.play();
         questionContainer.setAttribute("class","right-answer");
         score+=5;
         scoreEl.textContent = "Your Score: "+score;
 
         if (x===9) {
             timer.remove();
+            booyah.play();
             timerContainer.textContent = "Booyah!";
             timerContainer.setAttribute("style","animation: none; font-size: 2rem;");
             questionEl.textContent="Congrats! You finished all 20 questions in time!";
@@ -300,6 +326,7 @@ function nextQuestion(event) {
             options[1].remove();
             options[2].remove();
             options[3].remove();
+            
             //startEl.removeAttribute("style","display:none;");
             //startEl.textContent = "Save Your Score";
         };
@@ -308,13 +335,14 @@ function nextQuestion(event) {
         showQuestion();
 
     } else {
-    
+        womp.play();
         questionContainer.setAttribute("class","wrong-answer");
         scoreEl.textContent = "Your Score: "+score;
         timeLeft-=5;
 
         if (x===9) {
             timer.remove();
+            booyah.play();
             timerContainer.textContent = "Booyah!";
             timerContainer.setAttribute("style","animation: none; font-size: 2rem;");
             questionEl.textContent="Congrats! You finished all 20 questions in time!";
@@ -324,6 +352,7 @@ function nextQuestion(event) {
             options[1].remove();
             options[2].remove();
             options[3].remove();
+
             //startEl.removeAttribute("style","display:none;");
             //startEl.textContent = "Save Your Score";
         };
@@ -351,10 +380,12 @@ function showOptions() {
 }
 
 function nightTime() {
+    night.play();
     body.classList.add("dark-mode"); 
 }
 
 function dayTime() {
+    morning.play();
     body.classList.remove("dark-mode");
 }
 

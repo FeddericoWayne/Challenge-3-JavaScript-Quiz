@@ -135,6 +135,7 @@ hr {
     
 }
 .start-quiz:active {
+    transition: none;
     animation:none;
     transform: translateY(5px);
     cursor: pointer;
