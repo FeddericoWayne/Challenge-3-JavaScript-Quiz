@@ -1,4 +1,5 @@
 // Setting up basic question display format
+var title = document.querySelector("#title");
 var startEl = document.querySelector(".start-quiz");
 var countDownEl = document.querySelector(".count-down");
 var pulse = document.querySelector(".pulse");
@@ -18,6 +19,9 @@ var darkMode = document.querySelector("#dark-mode");
 var lightMode = document.querySelector("#light-mode");
 
 // Sound Effects
+var hover = new Audio();
+hover.src = "./Assets/Sound Effects/hover start.wav";
+
 var clickStart = new Audio();
 clickStart.src = "./Assets/Sound Effects/Start game.wav";
 
@@ -34,16 +38,17 @@ var booyah = new Audio();
 booyah.src = "./Assets/Sound Effects/Win Game.wav";
 
 var fiveSeconds = new Audio();
-fiveSeconds.src = "Assets/Sound Effects/count down.wav";
+fiveSeconds.src = "./Assets/Sound Effects/count down.wav";
 
 var morning = new Audio();
-morning.src = "Assets/Sound Effects/light-mode.wav";
+morning.src = "./Assets/Sound Effects/light-mode.wav";
 
 var night = new Audio();
-night.src = "Assets/Sound Effects/dark-mode.wav";
+night.src = "./Assets/Sound Effects/dark-mode.wav";
 
 var click = new Audio();
-click.src = "Assets/Sound Effects/click.wav";
+click.src = "./Assets/Sound Effects/click.wav";
+
 
 
 
@@ -238,7 +243,7 @@ var correctAnswer = [thirdOption, secondOption, fourthOption, thirdOption, secon
 // For Displaying Questions Sequentially, One at a Time
 function showQuestion() {
 
-
+    title.removeAttribute("class","bounce");
     startEl.setAttribute("style","display:none;");
     questionEl.textContent = questionList[x].question;
     options[0].textContent = questionList[x].option1;
@@ -289,6 +294,7 @@ function countDown() {
         if (timeLeft <= -2) {
             clearInterval(noTimeLeft,1000);
             gameOverSound.play();
+            title.setAttribute("class","bounce");
             timer.textContent = "Game Over! You ran out of time!"
             timerContainer.setAttribute("style","animation:none;");
             questionContainer.setAttribute("class","question-container");
@@ -365,10 +371,6 @@ function nextQuestion(event) {
 
     }
    
-
-
-
-
 
 };
 

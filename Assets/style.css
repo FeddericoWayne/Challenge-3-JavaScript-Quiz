@@ -43,6 +43,13 @@ hr {
     box-shadow: 0 0 0px 10px white;
     transition-duration: 1s;
     transition-property: color,background-color,box-shadow;
+
+}
+
+.bounce {
+    animation-name: bounce;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
 }
 
 /* Timer Styling */
@@ -87,6 +94,24 @@ hr {
     100% {
         transform: scale(0.95);
         box-shadow: 0 0 0 0 rgb(165, 207, 255, 0);
+    }
+    
+}
+
+/* Main Title Animation */
+
+@keyframes bounce {
+    0% { 
+        transform: translateY(0);
+
+    }
+
+    20% {
+        transform: translateY(-7px);
+    }
+
+    100% {
+        transform: translate(0);
     }
     
 }
