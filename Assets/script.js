@@ -42,6 +42,9 @@ morning.src = "Assets/Sound Effects/light-mode.wav";
 var night = new Audio();
 night.src = "Assets/Sound Effects/dark-mode.wav";
 
+var click = new Audio();
+click.src = "Assets/Sound Effects/click.wav";
+
 
 
 // For Score Keeping
@@ -326,7 +329,7 @@ function nextQuestion(event) {
             options[1].remove();
             options[2].remove();
             options[3].remove();
-            
+
             //startEl.removeAttribute("style","display:none;");
             //startEl.textContent = "Save Your Score";
         };
