@@ -62,14 +62,6 @@ var alertSound = new Audio();
 alertSound.src = "Assets/Sound Effects/Alert.wav";
 
 
-/* Local Storage */
-var lastPlayer = localStorage.getItem("playerInfo");
-var playerInfo = '';
-
-
-
-
-
 
 // For Score Keeping
 var scoreEl = document.querySelector("#score");
@@ -439,9 +431,14 @@ function keyDownSound() {
     keyDown.play();
 }
 
+/* Local Storage */
+var playerInfo = '';
+
 function save(event) {
 
     event.preventDefault;
+
+    //localStorage.getItem("playerInfo");
 
     if (inputBox.value === '') {
         alertSound.play();
@@ -450,16 +447,18 @@ function save(event) {
     } else {
 
         clickStart.play();
+
+        /* Turns Player Initials and Scores into a JSON string */
         var playerInfoObj = {
             playerInitial: inputBox.value,
             playerScore: score,
         }
         
         playerInfo = JSON.stringify(playerInfoObj);
-        localStorage.setItem("playerInfo",playerInfo);
 
+        
 
-
+        /* Clears the Input Box */
         inputBox.value = "";
 
         
