@@ -19,9 +19,6 @@ var darkMode = document.querySelector("#dark-mode");
 var lightMode = document.querySelector("#light-mode");
 
 // Sound Effects
-var hover = new Audio();
-hover.src = "./Assets/Sound Effects/hover start.wav";
-
 var clickStart = new Audio();
 clickStart.src = "./Assets/Sound Effects/Start game.wav";
 
