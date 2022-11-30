@@ -6,7 +6,6 @@ var playerScore = document.querySelector("#player-score");
 var input = document.querySelector(".input");
 var inputBox = document.querySelector("#input-box");
 var alertMessage = document.querySelector("#alert");
-var playerInitial = inputBox.value;
 var countDownEl = document.querySelector(".count-down");
 var pulse = document.querySelector(".pulse");
 var timerContainer = document.querySelector("#timer-container");
@@ -22,6 +21,11 @@ var optionList = document.querySelector(".options");
 var body = document.querySelector("body");
 var darkMode = document.querySelector("#dark-mode");
 var lightMode = document.querySelector("#light-mode");
+
+
+
+
+//localStorage.getItem("")
 
 // Sound Effects
 var clickStart = new Audio();
@@ -50,6 +54,18 @@ night.src = "./Assets/Sound Effects/dark-mode.wav";
 
 var click = new Audio();
 click.src = "./Assets/Sound Effects/click.wav";
+
+var keyDown = new Audio();
+keyDown.src = "Assets/Sound Effects/Keydown.wav";
+
+var alertSound = new Audio();
+alertSound.src = "Assets/Sound Effects/Alert.wav";
+
+
+/* Local Storage */
+var lastPlayer = localStorage.getItem("playerInfo");
+
+
 
 
 
@@ -413,14 +429,41 @@ function dayTime() {
     body.classList.remove("dark-mode");
 }
 
+function focusSound() {
+    click.play();
 
-function save() {
+}
+
+function keyDownSound() {
+    keyDown.play();
+}
+
+function save(event) {
+
+    event.preventDefault;
 
     if (inputBox.value === '') {
+        alertSound.play();
         alertMessage.removeAttribute("style","display:none");
+
+    } else {
+
+        clickStart.play();
+        var playerInfoObj = {
+            playerInitial: inputBox.value,
+            playerScore: score,
+        }
+        
+        var playerInfo = JSON.stringify(playerInfoObj);
+        localStorage.setItem("playerInfo",playerInfo);
+
+
+
+        inputBox.value = "";
+
+        
+        
     }
-
-
 
 }
 
@@ -430,6 +473,8 @@ startEl.addEventListener("click", showQuestion);
 countDownEl.addEventListener("click", countDown);
 pulse.addEventListener("click",pulseAlert);
 saveScore.addEventListener("click", save);
+inputBox.addEventListener("click", focusSound);
+inputBox.addEventListener("keydown",keyDownSound);
 optionList.addEventListener("click", showOptions);
 options[0].addEventListener("click", nextQuestion);
 options[1].addEventListener("click", nextQuestion);

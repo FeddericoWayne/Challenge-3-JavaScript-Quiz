@@ -60,7 +60,7 @@ hr {
     width: 50%;
     background-color: var(--babyblue);
     border-radius: 35px;
-    margin: 25px auto;
+    margin: 15px auto;
     transition-duration: 1s;
     transition-property: background-color,color;
 
@@ -468,7 +468,7 @@ ol {
     width: 50%;
     background-color: var(--dusk);
     border-radius: 35px;
-    margin: 25px auto;
+    margin: 15px auto;
 
 }
 
