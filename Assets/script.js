@@ -64,6 +64,7 @@ alertSound.src = "Assets/Sound Effects/Alert.wav";
 
 /* Local Storage */
 var lastPlayer = localStorage.getItem("playerInfo");
+var playerInfo = '';
 
 
 
@@ -454,7 +455,7 @@ function save(event) {
             playerScore: score,
         }
         
-        var playerInfo = JSON.stringify(playerInfoObj);
+        playerInfo = JSON.stringify(playerInfoObj);
         localStorage.setItem("playerInfo",playerInfo);
 
 
