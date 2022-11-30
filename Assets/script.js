@@ -1,9 +1,14 @@
 // Setting up basic question display format
 var title = document.querySelector("#title");
 var startEl = document.querySelector(".start-quiz");
+var saveScore = document.querySelector("#save-score");
+var playerScore = document.querySelector("#player-score");
+var input = document.querySelector(".input");
+var inputBox = document.querySelector("#input-box");
+var alertMessage = document.querySelector("#alert");
+var playerInitial = inputBox.value;
 var countDownEl = document.querySelector(".count-down");
 var pulse = document.querySelector(".pulse");
-//var save = document.querySelector(".save-score");
 var timerContainer = document.querySelector("#timer-container");
 var questionContainer = document.querySelector(".question-container");
 var questionEl = document.querySelector("#question");
@@ -61,6 +66,11 @@ var timeLeft = 60;
 timer.textContent = "Here are the rules:";
 questionEl.innerHTML = "After you click on the Start Quiz button below, <br>you'll have 60 seconds to answer the following 20 questions by clicking on the options.<br>If you answer a question correctly, 5 points will be added to your score.<br>If you answer a question incorrectly, you will lose 5 seconds from the countdown.<br>If you finish answering all 20 questions before time is up, you win!<br>If you don't finish answering all 20 questions before time is up, you lose!"
 scoreEl.textContent = "Your Score: "+score;
+playerScore.setAttribute("style","display:none");
+saveScore.setAttribute("style","display:none");
+input.setAttribute("style","display:none");
+alertMessage.setAttribute("style","display:none");
+
 
 
 
@@ -295,13 +305,18 @@ function countDown() {
             timer.textContent = "Game Over! You ran out of time!"
             timerContainer.setAttribute("style","animation:none;");
             questionContainer.setAttribute("class","question-container");
-            questionEl.remove();
+            questionEl.textContent = "Womp Womp!"
+            questionEl.setAttribute("style","font-size: 2rem;");
             options[0].remove();
             options[1].remove();
             options[2].remove();
             options[3].remove();
-            //startEl.removeAttribute("style","display:none;");
-            //startEl.textContent = "Save Your Score";
+            playerScore.removeAttribute("style","display:none");
+            playerScore.textContent = "Your Score: " + score;
+            saveScore.removeAttribute("style","display:none");
+            input.removeAttribute("style","display:none");
+            scoreEl.remove();
+
         }
 
         
@@ -332,9 +347,13 @@ function nextQuestion(event) {
             options[1].remove();
             options[2].remove();
             options[3].remove();
+            playerScore.removeAttribute("style","display:none");
+            playerScore.textContent = "Your Score: " + score;
+            saveScore.removeAttribute("style","display:none");
+            input.removeAttribute("style","display:none");
+            scoreEl.remove();
+            
 
-            //startEl.removeAttribute("style","display:none;");
-            //startEl.textContent = "Save Your Score";
         };
 
         x++;
@@ -358,9 +377,12 @@ function nextQuestion(event) {
             options[1].remove();
             options[2].remove();
             options[3].remove();
+            playerScore.removeAttribute("style","display:none");
+            playerScore.textContent = "Your Score: " + score;
+            saveScore.removeAttribute("style","display:none");
+            input.removeAttribute("style","display:none");
+            scoreEl.remove();
 
-            //startEl.removeAttribute("style","display:none;");
-            //startEl.textContent = "Save Your Score";
         };
 
         x++;
@@ -392,14 +414,22 @@ function dayTime() {
 }
 
 
-//function saveScore() {}
+function save() {
+
+    if (inputBox.value === '') {
+        alertMessage.removeAttribute("style","display:none");
+    }
+
+
+
+}
 
 
 // Event Listners
 startEl.addEventListener("click", showQuestion);
 countDownEl.addEventListener("click", countDown);
 pulse.addEventListener("click",pulseAlert);
-//save.addEventListener("click",saveScore);
+saveScore.addEventListener("click", save);
 optionList.addEventListener("click", showOptions);
 options[0].addEventListener("click", nextQuestion);
 options[1].addEventListener("click", nextQuestion);

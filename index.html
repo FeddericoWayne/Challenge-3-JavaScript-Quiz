@@ -14,6 +14,12 @@
     </div>
     <div class="question-container">
         <h3 id="question"></h3>
+        <h4 id="player-score"></h4>
+        <div class="input">
+            <label id="enter-initials">Enter Your Initials:</label>
+            <input id="input-box" name="initials" type="text" placeholder="Enter Your Initials Here">
+            <h5 id="alert">Please Enter Your Initials to Save Your Score!</h5>
+        </div>
         <ol>
             <li id="option-1" class="option"></li>
             <li id="option-2" class="option"></li>
@@ -23,6 +29,7 @@
     </div>
     <h4 id="score"></h4>
     <h2 class="start-quiz count-down pulse options save-score" onmousedown="clickStart.play()">Start Quiz</h2>
+    <h2 id="save-score" onmousedown="clickStart.play()">Save Score</h2>
     <hr>
     <div id="modes">
         <p id="light-mode">Light Mode</p>
