@@ -6,6 +6,7 @@ var playerScore = document.querySelector("#player-score");
 var input = document.querySelector(".input");
 var inputBox = document.querySelector("#input-box");
 var alertMessage = document.querySelector("#alert");
+var board = document.querySelector("#board");
 var countDownEl = document.querySelector(".count-down");
 var pulse = document.querySelector(".pulse");
 var timerContainer = document.querySelector("#timer-container");
@@ -19,13 +20,18 @@ var options = document.querySelectorAll("li");
 var optionContainer = document.querySelector("ol");
 var optionList = document.querySelector(".options");
 var body = document.querySelector("body");
+var tryAgain = document.querySelector("#try-again");
 var darkMode = document.querySelector("#dark-mode");
 var lightMode = document.querySelector("#light-mode");
 
+// Timer Variables
+var timer = document.querySelector("#timer");
+var timeLeft = 90;
 
 
 
-//localStorage.getItem("")
+
+
 
 // Sound Effects
 var clickStart = new Audio();
@@ -67,37 +73,36 @@ alertSound.src = "Assets/Sound Effects/Alert.wav";
 var scoreEl = document.querySelector("#score");
 var score=0;
 
-// Timer Variables
-var timer = document.querySelector("#timer");
-var timeLeft = 60;
+
 
 // Game Rules
 timer.textContent = "Here are the rules:";
-questionEl.innerHTML = "After you click on the Start Quiz button below, <br>you'll have 60 seconds to answer the following 20 questions by clicking on the options.<br>If you answer a question correctly, 5 points will be added to your score.<br>If you answer a question incorrectly, you will lose 5 seconds from the countdown.<br>If you finish answering all 20 questions before time is up, you win!<br>If you don't finish answering all 20 questions before time is up, you lose!"
+questionEl.innerHTML = "After you click on the Start Quiz button below, <br>you'll have 90 seconds to answer the following 20 questions by clicking on the options.<br>If you answer a question correctly, 5 points will be added to your score.<br>If you answer a question incorrectly, you will lose 5 seconds from the countdown.<br>If you finish answering all 20 questions before time is up, you win!<br>If you don't finish answering all 20 questions before time is up, you lose!"
 scoreEl.textContent = "Your Score: "+score;
 playerScore.setAttribute("style","display:none");
 saveScore.setAttribute("style","display:none");
+board.setAttribute("style","display:none");
+tryAgain.setAttribute("style","display:none");
 input.setAttribute("style","display:none");
 alertMessage.setAttribute("style","display:none");
-
 
 
 
 // List of Questions
 var question1 = {
     question: "What is the main purpose of JavaScript?",
-    option1: "To style the html.",
-    option2: "To build the structure of the webpage.",
-    option3: "To add interactivity to the webpage.",
-    option4: "None of the above.", 
+    option1: "To style the html",
+    option2: "To build the structure of the webpage",
+    option3: "To add interactivity to the webpage",
+    option4: "None of the above", 
 };
 
 var question2 = {
     question: "Where in the HTML file do you link an external JavaScript file?",
-    option1: "Inside the <head> section as a <meta> element.",
-    option2: "At the bottom of the <body> element.",
-    option3: "Inside the <footer> element.",
-    option4: "Anywhere in the HTML file.",
+    option1: "Inside the <head> section as a <meta> element",
+    option2: "At the bottom of the <body> element",
+    option3: "Inside the <footer> element",
+    option4: "Anywhere in the HTML file",
 };
 
 var question3 = {
@@ -105,7 +110,7 @@ var question3 = {
     option1: "'var'",
     option2: "'let'",
     option3: "'const'",
-    option4: "All of the above.",
+    option4: "All of the above",
 };
 
 var question4 = {
@@ -134,18 +139,18 @@ var question6 = {
 
 var question7 = {
     question: "What does the array method '.pop() do?",
-    option1: "It removes the last element from an array.",
-    option2: "It removes the first element of an array.",
-    option3: "It replaces the last element of an array with the element in the parameter.",
-    option4: "It adds an element to the beginning of an array.",
+    option1: "It removes the last element from an array",
+    option2: "It removes the first element of an array",
+    option3: "It replaces the last element of an array with the element in the parameter",
+    option4: "It adds an element to the beginning of an array",
 };
 
 var question8 = {
     question: "what does the method 'Math.random()' do?",
-    option1: "It returns a random number between 1 and 10.",
-    option2: "It returns a random number between 0 and 100.",
-    option3: "It returns a random number between 0 and 1.",
-    option4: "It lists all the integers between 0 and 10.",
+    option1: "It returns a random number between 1 and 10",
+    option2: "It returns a random number between 0 and 100",
+    option3: "It returns a random number between 0 and 1",
+    option4: "It lists all the integers between 0 and 10",
 };
 
 var question9 = {
@@ -163,97 +168,97 @@ var question10 = {
     option3: "Anticipation Program Intercept",
     option4: "Amplified Performance Initiation",
 };
-/*
+
 var question11 = {
-    question: ,
-    option1: ,
-    option2: ,
-    option3: ,
-    option4: ,
+    question: "What will 'document.querySelectorAll('div') return?",
+    option1: 'The word "div"',
+    option2: "The first <div> element in your HTML",
+    option3: "An array with all the <div> elements in your HTML",
+    option4: 'The elements with the id of "div"',
 };
 
 var question12 = {
-    question: ,
-    option1: ,
-    option2: ,
-    option3: ,
-    option4: ,
+    question: "What are the two parameters you pass into the setInterval(); method?",
+    option1:"Event target and time left",
+    option2: "Beginning second count and ending second count",
+    option3: "Targetd element and beginning second count",
+    option4: "Function code and a number in millisecond",
 };
 
 var question13 = {
-    question: ,
-    option1: ,
-    option2: ,
-    option3: ,
-    option4: ,
+    question: "Which one below is NOT an event in JavaScript?",
+    option1: "click",
+    option2: "keydown",
+    option3: "doublekey",
+    option4: "mouseover",
 };
 
 var question14 = {
-    question: ,
-    option1: ,
-    option2: ,
-    option3: ,
-    option4: ,
+    question: "How can you change the style of an element?",
+    option1: "Add a style attribute inside the HTML element tag",
+    option2: "Use the .setAttribute(); method in JavaScript",
+    option3: "Link a CSS stylesheet to the HTML",
+    option4: "All of the above",
 };
 
 var question15 = {
-    question: ,
-    option1: ,
-    option2: ,
-    option3: ,
-    option4: ,
+    question: 'What does "event.preventDefault();" do to a submit button?',
+    option1: "It stops the browser from applying its default CSS settings on your HTML",
+    option2: "It stops the browser from sending the data input",
+    option3: "It prevents the HTML from receiving the data input",
+    option4: "None of the above",
 };
 
 var question16 = {
-    question: ,
-    option1: ,
-    option2: ,
-    option3: ,
-    option4: ,
+    question: "What's the difference between .innerHTML and .textContent?",
+    option1: "No difference. They are used interchangeably",
+    option2: ".textContent does not render any HTML tags within the text, while .innerHTML does",
+    option3: "Both of them recognize and render HTML tags inside the text",
+    option4: "Neither of them renders HTML tags",
 };
 
 var question17 = {
-    question: ,
-    option1: ,
-    option2: ,
-    option3: ,
-    option4: ,
+    question: "Which one below is a correct way to select HTML elements in JavaScript?",
+    option1: "element.querySelector(<button>)",
+    option2: "element.getSelectorById('#button')",
+    option3: "document.getElementsbyClassName('.button')",
+    option4: "document.getElementById('button')", 
 };
 
 var question18 = {
-    question: ,
-    option1: ,
-    option2: ,
-    option3: ,
-    option4: ,
+    question: "What does event.stopPropagation do?",
+    option1: "It stops the CSS settings of different elements from contradicting each other",
+    option2: "It stops an event from travelling down the DOM tree",
+    option3: "It prevents an event from bubbling up the DOM tree",
+    option4: "It makes sure that the event target is within the element selected",
 };
 
 var question19 = {
-    question: ,
-    option1: ,
-    option2: ,
-    option3: ,
-    option4: ,
+    question: "What does JSON.stringify(); do?",
+    option1: "It turns an object into a string",
+    option2: "It turns a string into an object",
+    option3: "It turns a string into a boolean value",
+    option4: "None of the above",
 };
 
 var question20 = {
-    question: ,
-    option1: ,
-    option2: ,
-    option3: ,
-    option4: ,
-}; */
+    question: "How do you utilize jQuery for your webpage?",
+    option1: "Just insert an external JavaScript file in your HTML as usual",
+    option2: "Insert a link to the latest JQuery below your own JavaScript file",
+    option3: "Insert the link to the latest JQuery above your own JavaScript file",
+    option4: "insert the link to the latest JQuery inside the <head> element",
+}; 
 
 // Randomize the Questions
 
 
 // Assigning all the Questions to an Array
 var questionList = [];
-questionList = [question1,question2,question3,question4,question5,question6,question7,question8,question9,question10/*,question11,question12,question13,question14,question15,question16,question17,question18,question19,question20*/];
+questionList = [question1,question2,question3,question4,question5,question6,question7,question8,question9,question10,question11,question12,question13,question14,question15,question16,question17,question18,question19,question20];
 var x = 0;
 
 // Assigning Correct Answers to an Array
-var correctAnswer = [thirdOption, secondOption, fourthOption, thirdOption, secondOption, fourthOption, firstOption,thirdOption, thirdOption, secondOption, ];
+var correctAnswer = [thirdOption, secondOption, fourthOption, thirdOption, secondOption, fourthOption, firstOption,thirdOption, thirdOption, secondOption, thirdOption, fourthOption, thirdOption, fourthOption, secondOption, secondOption, fourthOption, thirdOption, firstOption, thirdOption];
 
 
 // For Displaying Questions Sequentially, One at a Time
@@ -272,64 +277,59 @@ function showQuestion() {
 };
 
 
+
 // Countdown Sequence
 function countDown() {
 
-    var noTimeLeft = setInterval(countDownTimer,1000);
-    
-    function countDownTimer() {
-        timer.textContent = "You have "+timeLeft+" seconds left!";
-        timeLeft--;
+    var noTimeLeft = setInterval(function(){timer.textContent = "You have "+timeLeft+" seconds left!";
+    timeLeft--;
 
-        if (timeLeft <= 4) {
-            
-            timer.setAttribute("style","color: #ff8b94; font-size: 1.3rem; font-weight: bolder;");
-        } 
-
-        if (timeLeft <= 3) {
-            fiveSeconds.play();
-            timer.setAttribute("style","color: #f65f5f; font-size: 1.3rem; font-weight: bolder;");
-        }
-
-        if (timeLeft <= 2) {
-            timer.setAttribute("style","color: #fc3c3c; font-size: 1.4rem; font-weight: bolder;");
-        }
-
-        if (timeLeft <= 1) {
-            timer.setAttribute("style","color: #fc2828; font-size: 1.4rem; font-weight: bolder;");
-        }
-
-        if (timeLeft <= 0) { 
-            timer.setAttribute("style","color: #fd1717; font-size: 1.5rem; font-weight: bolder;");
-        }
-
-        if (timeLeft <= -1) {
-            timer.setAttribute("style","color: #ff0000; font-size: 1.6rem; font-weight: bolder;");
-        }
-
-        if (timeLeft <= -2) {
-            clearInterval(noTimeLeft,1000);
-            gameOverSound.play();
-            title.setAttribute("class","bounce");
-            timer.textContent = "Game Over! You ran out of time!"
-            timerContainer.setAttribute("style","animation:none;");
-            questionContainer.setAttribute("class","question-container");
-            questionEl.textContent = "Womp Womp!"
-            questionEl.setAttribute("style","font-size: 2rem;");
-            options[0].remove();
-            options[1].remove();
-            options[2].remove();
-            options[3].remove();
-            playerScore.removeAttribute("style","display:none");
-            playerScore.textContent = "Your Score: " + score;
-            saveScore.removeAttribute("style","display:none");
-            input.removeAttribute("style","display:none");
-            scoreEl.remove();
-
-        }
-
+    if (timeLeft <= 4) {
         
-    };
+        timer.setAttribute("style","color: #ff8b94; font-size: 1.3rem; font-weight: bolder;");
+    } 
+
+    if (timeLeft <= 3) {
+        fiveSeconds.play();
+        timer.setAttribute("style","color: #f65f5f; font-size: 1.3rem; font-weight: bolder;");
+    }
+
+    if (timeLeft <= 2) {
+        timer.setAttribute("style","color: #fc3c3c; font-size: 1.4rem; font-weight: bolder;");
+    }
+
+    if (timeLeft <= 1) {
+        timer.setAttribute("style","color: #fc2828; font-size: 1.4rem; font-weight: bolder;");
+    }
+
+    if (timeLeft <= 0) { 
+        timer.setAttribute("style","color: #fd1717; font-size: 1.5rem; font-weight: bolder;");
+    }
+
+    if (timeLeft <= -1) {
+        timer.setAttribute("style","color: #ff0000; font-size: 1.6rem; font-weight: bolder;");
+    }
+
+    if (timeLeft <= -2) {
+        clearInterval(noTimeLeft,1000);
+        gameOverSound.play();
+        timer.textContent = "Game Over! You ran out of time!"
+        timerContainer.setAttribute("style","animation:none;");
+        questionContainer.setAttribute("class","question-container");
+        questionEl.textContent = "Womp Womp!"
+        questionEl.setAttribute("style","font-size: 2rem;");
+        options[0].remove();
+        options[1].remove();
+        options[2].remove();
+        options[3].remove();
+        playerScore.removeAttribute("style","display:none");
+        playerScore.textContent = "Your Score: " + score;
+        saveScore.removeAttribute("style","display:none");
+        input.removeAttribute("style","display:none");
+        scoreEl.remove();
+
+    }},1000);
+
     
 };
 
@@ -344,8 +344,11 @@ function nextQuestion(event) {
         score+=5;
         scoreEl.textContent = "Your Score: "+score;
 
-        if (x===9) {
+
+
+        if (x===19) {
             timer.remove();
+            timeLeft = Infinity;
             booyah.play();
             timerContainer.textContent = "Booyah!";
             timerContainer.setAttribute("style","animation: none; font-size: 2rem;");
@@ -368,14 +371,19 @@ function nextQuestion(event) {
         x++;
         showQuestion();
 
+   
+
     } else {
         womp.play();
         questionContainer.setAttribute("class","wrong-answer");
         scoreEl.textContent = "Your Score: "+score;
         timeLeft-=5;
 
-        if (x===9) {
+       
+
+        if (x===19) {
             timer.remove();
+            timeLeft = Infinity;
             booyah.play();
             timerContainer.textContent = "Booyah!";
             timerContainer.setAttribute("style","animation: none; font-size: 2rem;");
@@ -396,9 +404,11 @@ function nextQuestion(event) {
 
         x++;
         showQuestion();
+       
 
     }
-   
+
+
 
 };
 
@@ -431,10 +441,12 @@ function keyDownSound() {
     keyDown.play();
 }
 
-/* Local Storage */
+// Local Storage
 var playerInfo = '';
 
 function save(event) {
+
+    title.setAttribute("class","bounce");
 
     event.preventDefault;
 
@@ -458,13 +470,46 @@ function save(event) {
 
         
 
-        /* Clears the Input Box */
+        // Clears the Input Box
         inputBox.value = "";
+
+        // Display ScoreBoard
+        showScoreBoard();
 
         
         
     }
 
+
+}
+
+var displayInfo = {};
+
+function showScoreBoard() {
+    questionEl.setAttribute("style","display:none");
+    playerScore.textContent = "Score Board";
+    input.setAttribute("style","display:none");
+    saveScore.setAttribute("style","display:none");
+    tryAgain.removeAttribute("style","display:none");
+    board.removeAttribute("style","display:none");
+
+    displayInfo = JSON.parse(playerInfo);
+    var boardEl = document.createElement("li");
+    boardEl.innerHTML = "Player: "+displayInfo.playerInitial+" | Score: "+displayInfo.playerScore;
+    board.appendChild(boardEl);
+    
+   
+    
+
+
+
+
+
+}
+
+// Refreshes the Page for the User to Try Again 
+function refresh() {
+    location.reload();
 }
 
 
@@ -480,6 +525,7 @@ options[0].addEventListener("click", nextQuestion);
 options[1].addEventListener("click", nextQuestion);
 options[2].addEventListener("click", nextQuestion);
 options[3].addEventListener("click", nextQuestion);
+tryAgain.addEventListener("click",refresh);
 darkMode.addEventListener("click",nightTime);
 lightMode.addEventListener("click",dayTime);
 

@@ -231,6 +231,45 @@ hr {
 
 }
 
+/* Try Again Button Styling */
+#try-again {
+    color: white;
+    background-color: var(--salmon);
+    border: 10px solid var(--rosy);
+    border-radius: 35px;
+    padding: 15px 20px;
+    box-shadow: 0 0 0px 10px var(--nude);
+    animation-name: pulse-pink;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    transition-duration: 1s;
+    transition-property: color, background-color, border, box-shadow;
+}
+
+#try-again:hover {
+    cursor: pointer;
+    color: var(--salmon);
+    background-color: var(--nude);
+    border: 10px solid var(--rosy);
+    border-radius: 35px;
+    padding: 15px 20px;
+    box-shadow: 0 0 0px 10px white;
+    
+}
+#try-again:active {
+    transition: none;
+    animation:none;
+    transform: translateY(5px);
+    cursor: pointer;
+    color: var(--shade);
+    background-color: white;
+    border: 10px solid rgba(168,168,168,0.6);
+    border-radius: 35px;
+    padding: 15px 20px;
+    box-shadow: 0 0 0px 10px rgba(168,168,168,0.3);
+
+}
+
 /* Question Section Styling */
 .question-container {
     display: flex;
@@ -280,10 +319,10 @@ hr {
 
 /* Question and Option Styling */
 #question {
-    font-size: 1.4em;
+    font-size: 1.3em;
     color: var(--midnight);
     text-align: center;
-    line-height: 1.8rem;
+    line-height: 1.6rem;
     transition-duration: 1s;
     transition-property: color;
 }
@@ -434,6 +473,20 @@ ol {
     transition-property: color, background-color, box-shadow;
 }
 
+/* Score Board Styling */
+#board {
+    background-color: var(--moss);
+    color: var(--midnight);
+    display:flex;
+    border-radius: 25px;
+    height:fit-content;
+    padding: 10px 25px;
+    transition-duration: 1s;
+    transition-property: color, background-color;
+
+
+}
+
 
 /* To Toggle Dark-Mode */
 #modes {
@@ -520,7 +573,7 @@ ol {
 .dark-mode #question {
     color: white;
     text-align: center;
-    line-height: 1.8rem;
+    line-height: 1.6rem;
 
 }
 
@@ -568,6 +621,19 @@ ol {
     color: var(--spotlight);
     transition-duration: 1s;
     transition-property: color;
+}
+
+.dark-mode #board {
+    background-color: var(--lavendar);
+    color: white;
+    display:flex;
+    border-radius: 25px;
+    height:fit-content;
+    padding: 10px 25px;
+    transition-duration: 1s;
+    transition-property: color, background-color;
+
+
 }
 
 .dark-mode #light-mode {
