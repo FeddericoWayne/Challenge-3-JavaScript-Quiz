@@ -29,10 +29,6 @@ var timer = document.querySelector("#timer");
 var timeLeft = 90;
 
 
-
-
-
-
 // Sound Effects
 var clickStart = new Audio();
 clickStart.src = "./Assets/Sound Effects/Start game.wav";
@@ -74,10 +70,9 @@ var scoreEl = document.querySelector("#score");
 var score=0;
 
 
-
 // Game Rules
 timer.textContent = "Here are the rules:";
-questionEl.innerHTML = "After you click on the Start Quiz button below, <br>you'll have 90 seconds to answer the following 20 questions by clicking on the options.<br>If you answer a question correctly, 5 points will be added to your score.<br>If you answer a question incorrectly, you will lose 5 seconds from the countdown.<br>If you finish answering all 20 questions before time is up, you win!<br>If you don't finish answering all 20 questions before time is up, you lose!"
+questionEl.innerHTML = "After you click on the Start Quiz button below, <br>you'll have 90 seconds to answer the following 20 questions by clicking on the options.<br>Each correct answer is worth 5 points,<br>and each wrong answer will cost you 5 seconds from the countdown time!"
 scoreEl.textContent = "Your Score: "+score;
 playerScore.setAttribute("style","display:none");
 saveScore.setAttribute("style","display:none");
@@ -85,7 +80,6 @@ board.setAttribute("style","display:none");
 tryAgain.setAttribute("style","display:none");
 input.setAttribute("style","display:none");
 alertMessage.setAttribute("style","display:none");
-
 
 
 // List of Questions
@@ -249,8 +243,6 @@ var question20 = {
     option4: "insert the link to the latest JQuery inside the <head> element",
 }; 
 
-// Randomize the Questions
-
 
 // Assigning all the Questions to an Array
 var questionList = [];
@@ -275,7 +267,6 @@ function showQuestion() {
 
 
 };
-
 
 
 // Countdown Sequence
@@ -412,16 +403,17 @@ function nextQuestion(event) {
 
 };
 
-
-
+// Countdown Alert
 function pulseAlert() {
     timerContainer.classList.toggle("pulse-alert");
 }
 
+//
 function showOptions() {
     optionContainer.classList.add("show-options");
 }
 
+// Light-Mode and Dark-Mode
 function nightTime() {
     night.play();
     body.classList.add("dark-mode"); 
@@ -432,6 +424,7 @@ function dayTime() {
     body.classList.remove("dark-mode");
 }
 
+// User Input Sound Effects
 function focusSound() {
     click.play();
 
@@ -444,6 +437,7 @@ function keyDownSound() {
 // Local Storage
 var playerInfo = '';
 
+// User Initial Entry and Saving
 function save(event) {
 
     title.setAttribute("class","bounce");
@@ -473,7 +467,7 @@ function save(event) {
         // Clears the Input Box
         inputBox.value = "";
 
-        // Display ScoreBoard
+        // Display User Scores
         showScoreBoard();
 
         
@@ -485,6 +479,8 @@ function save(event) {
 
 var displayInfo = {};
 
+
+// To Display User Scores
 function showScoreBoard() {
     questionEl.setAttribute("style","display:none");
     playerScore.textContent = "Score Board";
