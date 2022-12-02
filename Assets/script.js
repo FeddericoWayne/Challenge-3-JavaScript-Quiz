@@ -222,7 +222,7 @@ var question17 = {
     question: "Which one below is a correct way to select HTML elements in JavaScript?",
     option1: "element.querySelector(<button>)",
     option2: "element.getSelectorById('#button')",
-    option3: "document.getElementsbyClassName('.button')",
+    option3: "document.getByClassName('.button')",
     option4: "document.getElementById('button')", 
 };
 

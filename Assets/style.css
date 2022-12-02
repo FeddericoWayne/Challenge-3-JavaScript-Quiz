@@ -535,6 +535,7 @@ ol {
 
 /* Score Board Styling */
 #board {
+    list-style-type: none;
     font-family: 'Nerko One';
     background-color: var(--moss);
     color: var(--midnight);
