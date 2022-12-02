@@ -35,6 +35,7 @@ hr {
 
 /* Title Styling */
 #title {
+    font-family: 'Rubik Distressed';
     color: var(--midnight);
     background-color: var(--glade);
     border: 10px solid var(--moss);
@@ -54,6 +55,7 @@ hr {
 
 /* Timer Styling */
 #timer-container {
+    font-family: 'Nerko One';
     color: var(--midnight);
     padding: 10px 15px;
     text-align: center;
@@ -155,6 +157,7 @@ hr {
 }
 
 .start-quiz {
+    font-family: 'Rubik Distressed';
     color: white;
     background-color: var(--salmon);
     border: 10px solid var(--rosy);
@@ -194,6 +197,7 @@ hr {
 
 /* Save Score Button Styling */
 #save-score {
+    font-family: 'Rubik Distressed';
     color: white;
     background-color: var(--salmon);
     border: 10px solid var(--rosy);
@@ -233,6 +237,7 @@ hr {
 
 /* Try Again Button Styling */
 #try-again {
+    font-family: 'Rubik Distressed';
     color: white;
     background-color: var(--salmon);
     border: 10px solid var(--rosy);
@@ -272,6 +277,7 @@ hr {
 
 /* Clear Record Button Styling */
 #clear-history {
+    font-family: 'Rubik Distressed';
     color: white;
     background-color: var(--salmon);
     border: 10px solid var(--rosy);
@@ -483,6 +489,7 @@ ol {
 }
 
 #score {
+    font-family: 'Nerko One';
     color: var(--midnight);
     font-size: 1.5rem;
     margin: 10px auto;
@@ -492,6 +499,7 @@ ol {
 
 /* Score Saving Function Styling */
 #player-score {
+    font-family: 'Nerko One';
     font-size: 1.7em;
     text-align: center;
     color: var(--midnight);
@@ -526,7 +534,7 @@ ol {
 
 /* Score Board Styling */
 #board {
-
+    font-family: 'Nerko One';
     background-color: var(--moss);
     color: var(--midnight);
     display:flex;
@@ -679,12 +687,14 @@ ol {
 
 #alert {
     color: var(--salmon);
+    margin-bottom: 0;
     transition-duration: 1s;
     transition-property: color;
 }
 
 .dark-mode #alert {
     color: var(--spotlight);
+    margin-bottom: 0;
     transition-duration: 1s;
     transition-property: color;
 }
@@ -719,6 +729,7 @@ ol {
 }
 
 .dark-mode #dark-mode {
+
     cursor: pointer;
     color: white;
     background-color: var(--midnight);
@@ -732,6 +743,7 @@ ol {
 }
 
 #dark-mode {
+    font-family: 'Nerko One';
     cursor: pointer;
     background-color: rgba(255, 255, 255, 0.6);
     padding: 10px 15px;
@@ -749,6 +761,7 @@ ol {
 }
 
 #light-mode {
+    font-family: 'Nerko One';
     cursor: pointer;
     background-color: var(--spotlight);
     padding: 10px 15px;

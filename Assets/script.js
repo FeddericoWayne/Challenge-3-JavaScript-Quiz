@@ -327,6 +327,7 @@ function countDown() {
         saveScore.removeAttribute("style","display:none");
         input.removeAttribute("style","display:none");
         scoreEl.remove();
+        tryAgain.removeAttribute("style","display:none");
 
     }},1000);
 
@@ -365,6 +366,7 @@ function nextQuestion(event) {
             saveScore.removeAttribute("style","display:none");
             input.removeAttribute("style","display:none");
             scoreEl.remove();
+            tryAgain.removeAttribute("style","display:none");
             
 
         };
@@ -404,6 +406,7 @@ function nextQuestion(event) {
             saveScore.removeAttribute("style","display:none");
             input.removeAttribute("style","display:none");
             scoreEl.remove();
+            tryAgain.removeAttribute("style","display:none");
 
         };
 
@@ -459,6 +462,8 @@ function save(event) {
     event.preventDefault();
     title.setAttribute("class","bounce");
 
+
+
     var playerInfoObj = {
         name: inputBox.value,
         playerScore: score,
@@ -504,7 +509,6 @@ function showScoreBoard() {
     playerScore.textContent = "Score Board";
     input.setAttribute("style","display:none");
     saveScore.setAttribute("style","display:none");
-    tryAgain.removeAttribute("style","display:none");
     board.removeAttribute("style","display:none");
     clearRecord.removeAttribute("style","display:none");
 
@@ -518,7 +522,7 @@ function showScoreBoard() {
         var recordInfo = recordArr[i];
         var recordInfoObj = JSON.parse(recordInfo);
         var history = document.createElement("li");
-        history.textContent = "Player: " + recordInfoObj.name + "    |      Score: " + recordInfoObj.playerScore;
+        history.textContent = "Player: " + recordInfoObj.name + " | Score: " + recordInfoObj.playerScore;
         board.appendChild(history);
 
     }
