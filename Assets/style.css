@@ -270,6 +270,46 @@ hr {
 
 }
 
+/* Clear Record Button Styling */
+#clear-history {
+    color: white;
+    background-color: var(--salmon);
+    border: 10px solid var(--rosy);
+    border-radius: 35px;
+    padding: 15px 20px;
+    box-shadow: 0 0 0px 10px var(--nude);
+    animation-name: pulse-pink;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    transition-duration: 1s;
+    transition-property: color, background-color, border, box-shadow;
+}
+
+#clear-history:hover {
+    cursor: pointer;
+    color: var(--salmon);
+    background-color: var(--nude);
+    border: 10px solid var(--rosy);
+    border-radius: 35px;
+    padding: 15px 20px;
+    box-shadow: 0 0 0px 10px white;
+    
+}
+
+#clear-history:active {
+    transition: none;
+    animation:none;
+    transform: translateY(5px);
+    cursor: pointer;
+    color: var(--shade);
+    background-color: white;
+    border: 10px solid rgba(168,168,168,0.6);
+    border-radius: 35px;
+    padding: 15px 20px;
+    box-shadow: 0 0 0px 10px rgba(168,168,168,0.3);
+
+}
+
 /* Question Section Styling */
 .question-container {
     display: flex;
@@ -433,6 +473,15 @@ ol {
     transform: translateY(3px);
 }
 
+#congrats-womp {
+    font-size: 1.8em;
+    color: var(--midnight);
+    text-align: center;
+    line-height: 1.6rem;
+    transition-duration: 1s;
+    transition-property: color;
+}
+
 #score {
     color: var(--midnight);
     font-size: 1.5rem;
@@ -446,6 +495,7 @@ ol {
     font-size: 1.7em;
     text-align: center;
     color: var(--midnight);
+    margin: 10px auto 0;
     transition-duration: 1s;
     transition-property: color;
 }
@@ -454,6 +504,7 @@ ol {
     font-size: 1.5em;
     text-align: center;
     color: var(--midnight);
+    margin: 15px auto;
     transition-duration: 1s;
     transition-property: color;
 
@@ -475,12 +526,17 @@ ol {
 
 /* Score Board Styling */
 #board {
+
     background-color: var(--moss);
     color: var(--midnight);
     display:flex;
+    flex-direction: column;
+    text-align: center;
+    row-gap: 15px;
     border-radius: 25px;
     height:fit-content;
     padding: 10px 25px;
+    margin-top: 0;
     transition-duration: 1s;
     transition-property: color, background-color;
 
@@ -580,6 +636,7 @@ ol {
 .dark-mode #player-score {
     font-size: 1.7em;
     text-align: center;
+    margin: 10px auto 0;
     color: white;
     transition-duration: 1s;
     transition-property: color;
@@ -589,6 +646,7 @@ ol {
     font-size: 1.5em;
     text-align: center;
     color: white;
+    margin: 15px auto;
     transition-duration: 1s;
     transition-property: color;
 
@@ -596,6 +654,14 @@ ol {
 
 }
 
+.dark-mode #congrats-womp {
+    font-size: 1.8em;
+    color: white;
+    text-align: center;
+    line-height: 1.6rem;
+    transition-duration: 1s;
+    transition-property: color;
+}
 
 .dark-mode #score {
     color: white;
@@ -627,9 +693,12 @@ ol {
     background-color: var(--lavendar);
     color: white;
     display:flex;
+    flex-direction: column;
+    row-gap: 15px;
     border-radius: 25px;
     height:fit-content;
     padding: 10px 25px;
+    margin-top: 0;
     transition-duration: 1s;
     transition-property: color, background-color;
 
@@ -698,7 +767,7 @@ ol {
 
 }
 
-/* Media Queries for */
+/* Media Queries for Smaller Viewports*/
 
 
 

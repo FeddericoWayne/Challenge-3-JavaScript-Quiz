@@ -12,6 +12,7 @@ var pulse = document.querySelector(".pulse");
 var timerContainer = document.querySelector("#timer-container");
 var questionContainer = document.querySelector(".question-container");
 var questionEl = document.querySelector("#question");
+var congratsWomp = document.querySelector("#congrats-womp");
 var firstOption = document.querySelector("#option-1");
 var secondOption = document.querySelector("#option-2");
 var thirdOption = document.querySelector("#option-3");
@@ -20,6 +21,7 @@ var options = document.querySelectorAll("li");
 var optionContainer = document.querySelector("ol");
 var optionList = document.querySelector(".options");
 var body = document.querySelector("body");
+var clearRecord = document.querySelector("#clear-history");
 var tryAgain = document.querySelector("#try-again");
 var darkMode = document.querySelector("#dark-mode");
 var lightMode = document.querySelector("#light-mode");
@@ -63,6 +65,9 @@ keyDown.src = "Assets/Sound Effects/Keydown.wav";
 var alertSound = new Audio();
 alertSound.src = "Assets/Sound Effects/Alert.wav";
 
+var eraser = new Audio();
+eraser.src = "Assets/Sound Effects/Clear.wav";
+
 
 
 // For Score Keeping
@@ -73,10 +78,12 @@ var score=0;
 // Game Rules
 timer.textContent = "Here are the rules:";
 questionEl.innerHTML = "After you click on the Start Quiz button below, <br>you'll have 90 seconds to answer the following 20 questions by clicking on the options.<br>Each correct answer is worth 5 points,<br>and each wrong answer will cost you 5 seconds from the countdown time!"
+congratsWomp.setAttribute("style","display:none");
 scoreEl.textContent = "Your Score: "+score;
 playerScore.setAttribute("style","display:none");
 saveScore.setAttribute("style","display:none");
 board.setAttribute("style","display:none");
+clearRecord.setAttribute("style","display:none");
 tryAgain.setAttribute("style","display:none");
 input.setAttribute("style","display:none");
 alertMessage.setAttribute("style","display:none");
@@ -268,11 +275,12 @@ function showQuestion() {
 
 };
 
+var noTimeLeft;
 
 // Countdown Sequence
 function countDown() {
 
-    var noTimeLeft = setInterval(function(){timer.textContent = "You have "+timeLeft+" seconds left!";
+    noTimeLeft = setInterval(function(){timer.textContent = "You have "+timeLeft+" seconds left!";
     timeLeft--;
 
     if (timeLeft <= 4) {
@@ -306,9 +314,10 @@ function countDown() {
         gameOverSound.play();
         timer.textContent = "Game Over! You ran out of time!"
         timerContainer.setAttribute("style","animation:none;");
+        congratsWomp.textContent = "Womp Womp!";
+        congratsWomp.removeAttribute("style","display:none");
         questionContainer.setAttribute("class","question-container");
-        questionEl.textContent = "Womp Womp!"
-        questionEl.setAttribute("style","font-size: 2rem;");
+        questionEl.remove();
         options[0].remove();
         options[1].remove();
         options[2].remove();
@@ -339,12 +348,13 @@ function nextQuestion(event) {
 
         if (x===19) {
             timer.remove();
-            timeLeft = Infinity;
+            clearInterval(noTimeLeft,1000);
             booyah.play();
             timerContainer.textContent = "Booyah!";
             timerContainer.setAttribute("style","animation: none; font-size: 2rem;");
-            questionEl.textContent="Congrats! You finished all 20 questions in time!";
-            questionEl.setAttribute("style","font-size: 2rem;");
+            congratsWomp.textContent = "Congrats! You finished in time!";
+            congratsWomp.removeAttribute("style","display:none");
+            questionEl.remove();
             questionContainer.setAttribute("class","question-container");
             options[0].remove();
             options[1].remove();
@@ -362,6 +372,9 @@ function nextQuestion(event) {
         x++;
         showQuestion();
 
+        
+    
+
    
 
     } else {
@@ -370,16 +383,17 @@ function nextQuestion(event) {
         scoreEl.textContent = "Your Score: "+score;
         timeLeft-=5;
 
-       
+
 
         if (x===19) {
             timer.remove();
-            timeLeft = Infinity;
+            clearInterval(noTimeLeft,1000);
             booyah.play();
             timerContainer.textContent = "Booyah!";
             timerContainer.setAttribute("style","animation: none; font-size: 2rem;");
-            questionEl.textContent="Congrats! You finished all 20 questions in time!";
-            questionEl.setAttribute("style","font-size: 2rem;");
+            congratsWomp.textContent = "Congrats! You finished in time!";
+            congratsWomp.removeAttribute("style","display:none");
+            questionEl.remove();
             questionContainer.setAttribute("class","question-container");
             options[0].remove();
             options[1].remove();
@@ -395,11 +409,11 @@ function nextQuestion(event) {
 
         x++;
         showQuestion();
+
+       
        
 
     }
-
-
 
 };
 
@@ -434,36 +448,43 @@ function keyDownSound() {
     keyDown.play();
 }
 
-// Local Storage
-var playerInfo = '';
+// Local Storage for Score Board
+var playerInfo = "";
+var record = "";
+
 
 // User Initial Entry and Saving
 function save(event) {
 
+    event.preventDefault();
     title.setAttribute("class","bounce");
 
-    event.preventDefault;
+    var playerInfoObj = {
+        name: inputBox.value,
+        playerScore: score,
+    };
 
-    //localStorage.getItem("playerInfo");
+    // Turns Player Info into a String for Local Storage
+    playerInfo = JSON.stringify(playerInfoObj); 
 
+    // Alerts User if No Initial is Entered
     if (inputBox.value === '') {
         alertSound.play();
         alertMessage.removeAttribute("style","display:none");
 
     } else {
-
         clickStart.play();
 
-        /* Turns Player Initials and Scores into a JSON string */
-        var playerInfoObj = {
-            playerInitial: inputBox.value,
-            playerScore: score,
-        }
-        
-        playerInfo = JSON.stringify(playerInfoObj);
+        // Saves Current User Info to Local Storage
+        localStorage.setItem("playerInfo", playerInfo); 
 
-        
-
+        // Add Current playerInfo into Records
+        record = localStorage.getItem("record") ?? "";
+        record = record + " " + playerInfo;
+    
+        // Saves New Record to Local Storage
+        localStorage.setItem("record",record);
+   
         // Clears the Input Box
         inputBox.value = "";
 
@@ -471,13 +492,10 @@ function save(event) {
         showScoreBoard();
 
         
-        
     }
 
 
 }
-
-var displayInfo = {};
 
 
 // To Display User Scores
@@ -488,18 +506,22 @@ function showScoreBoard() {
     saveScore.setAttribute("style","display:none");
     tryAgain.removeAttribute("style","display:none");
     board.removeAttribute("style","display:none");
+    clearRecord.removeAttribute("style","display:none");
 
-    displayInfo = JSON.parse(playerInfo);
-    var boardEl = document.createElement("li");
-    boardEl.innerHTML = "Player: "+displayInfo.playerInitial+" | Score: "+displayInfo.playerScore;
-    board.appendChild(boardEl);
-    
-   
-    
+    // Turns Record String into an Array 
+    var recordArr = localStorage.getItem("record").split(" ");
+    // Removes the Empty Array Item at the Beginning
+    recordArr.shift();
 
+    // Loop to Display Every Record onto Score Board
+    for (var i=0; i<recordArr.length; i++) {
+        var recordInfo = recordArr[i];
+        var recordInfoObj = JSON.parse(recordInfo);
+        var history = document.createElement("li");
+        history.textContent = "Player: " + recordInfoObj.name + "    |      Score: " + recordInfoObj.playerScore;
+        board.appendChild(history);
 
-
-
+    }
 
 }
 
@@ -508,12 +530,25 @@ function refresh() {
     location.reload();
 }
 
+// Clears Local Storage 
+function wipeClean() {
+    var confirm = window.confirm("You Sure?");
+
+    if (confirm) {
+        eraser.play();
+        localStorage.clear();
+        board.remove();
+    } 
+
+};
+
 
 // Event Listners
 startEl.addEventListener("click", showQuestion);
 countDownEl.addEventListener("click", countDown);
 pulse.addEventListener("click",pulseAlert);
 saveScore.addEventListener("click", save);
+clearRecord.addEventListener("click", wipeClean);
 inputBox.addEventListener("click", focusSound);
 inputBox.addEventListener("keydown",keyDownSound);
 optionList.addEventListener("click", showOptions);
