@@ -312,7 +312,7 @@ function countDown() {
     if (timeLeft <= -2) {
         clearInterval(noTimeLeft,1000);
         gameOverSound.play();
-        timer.textContent = "Game Over! You ran out of time!"
+        timer.textContent = "You ran out of time!"
         timerContainer.setAttribute("style","animation:none;");
         congratsWomp.textContent = "Womp Womp!";
         congratsWomp.removeAttribute("style","display:none");
