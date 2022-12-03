@@ -126,7 +126,7 @@ var question5 = {
     question: "which one below is NOT one of the ways to select elements in the HTML file?",
     option1: "document.querySelector()",
     option2: "console.log()",
-    option3: "document.getElementsByClassName",
+    option3: "document.getElementsByClass",
     option4: "document.getElementById",
 };
 

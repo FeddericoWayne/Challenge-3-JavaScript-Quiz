@@ -856,6 +856,23 @@ ol {
         transition-property: background-color, color;
     }
 
+    .right-answer {
+        width: fit-content;
+    }
+    
+    .wrong-answer {
+        width: fit-content;
+    }
+
+    .dark-mode .right-answer {
+        width: fit-content;
+    }
+    
+    .dark-mode .wrong-answer {
+        width: fit-content;
+    }
+    
+
     .start-quiz {
         font-family: 'Rubik Distressed';
         font-size: 1rem;
