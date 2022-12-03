@@ -219,11 +219,11 @@ var question16 = {
 };
 
 var question17 = {
-    question: "Which one below is a correct way to select HTML elements in JavaScript?",
-    option1: "element.querySelector(<button>)",
-    option2: "element.getSelectorById('#button')",
-    option3: "document.getByClassName('.button')",
-    option4: "document.getElementById('button')", 
+    question: "Which one below is a correct way to select an HTML element in JavaScript?",
+    option1: "element.querySelector(<p>)",
+    option2: "element.getSelectorById('#btn')",
+    option3: "document.getByClassName('.btn')",
+    option4: "document.getElementById('btn')", 
 };
 
 var question18 = {
@@ -345,78 +345,44 @@ function nextQuestion(event) {
         score+=5;
         scoreEl.textContent = "Your Score: "+score;
 
-
-
-        if (x===19) {
-            timer.remove();
-            clearInterval(noTimeLeft,1000);
-            booyah.play();
-            timerContainer.textContent = "Booyah!";
-            timerContainer.setAttribute("style","animation: none; font-size: 2rem;");
-            congratsWomp.textContent = "Congrats! You finished in time!";
-            congratsWomp.removeAttribute("style","display:none");
-            questionEl.remove();
-            questionContainer.setAttribute("class","question-container");
-            options[0].remove();
-            options[1].remove();
-            options[2].remove();
-            options[3].remove();
-            playerScore.removeAttribute("style","display:none");
-            playerScore.textContent = "Your Score: " + score;
-            saveScore.removeAttribute("style","display:none");
-            input.removeAttribute("style","display:none");
-            scoreEl.remove();
-            tryAgain.removeAttribute("style","display:none");
-            
-
-        };
-
         x++;
         showQuestion();
 
-        
-    
-
-   
 
     } else {
         womp.play();
         questionContainer.setAttribute("class","wrong-answer");
         scoreEl.textContent = "Your Score: "+score;
         timeLeft-=5;
-
-
-
-        if (x===19) {
-            timer.remove();
-            clearInterval(noTimeLeft,1000);
-            booyah.play();
-            timerContainer.textContent = "Booyah!";
-            timerContainer.setAttribute("style","animation: none; font-size: 2rem;");
-            congratsWomp.textContent = "Congrats! You finished in time!";
-            congratsWomp.removeAttribute("style","display:none");
-            questionEl.remove();
-            questionContainer.setAttribute("class","question-container");
-            options[0].remove();
-            options[1].remove();
-            options[2].remove();
-            options[3].remove();
-            playerScore.removeAttribute("style","display:none");
-            playerScore.textContent = "Your Score: " + score;
-            saveScore.removeAttribute("style","display:none");
-            input.removeAttribute("style","display:none");
-            scoreEl.remove();
-            tryAgain.removeAttribute("style","display:none");
-
-        };
+ 
 
         x++;
         showQuestion();
 
-       
-       
+    };
 
-    }
+    if (x===19) {
+        timer.remove();
+        clearInterval(noTimeLeft,1000);
+        booyah.play();
+        timerContainer.textContent = "Booyah!";
+        timerContainer.setAttribute("style","animation: none; font-size: 2rem;");
+        congratsWomp.textContent = "Congrats! You finished in time!";
+        congratsWomp.removeAttribute("style","display:none");
+        questionEl.remove();
+        questionContainer.setAttribute("class","question-container");
+        options[0].remove();
+        options[1].remove();
+        options[2].remove();
+        options[3].remove();
+        playerScore.removeAttribute("style","display:none");
+        playerScore.textContent = "Your Score: " + score;
+        saveScore.removeAttribute("style","display:none");
+        input.removeAttribute("style","display:none");
+        scoreEl.remove();
+        tryAgain.removeAttribute("style","display:none");
+
+    };
 
 };
 

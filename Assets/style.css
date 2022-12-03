@@ -856,6 +856,62 @@ ol {
         transition-property: background-color, color;
     }
 
+    #option-1 {
+        font-size: 1.2em;
+        cursor: pointer;
+        color: var(--midnight);
+        margin: 5px auto;
+        padding: 5px 15px;
+        text-align: center;
+        background-color: var(--lavendar);
+        border-radius: 25px;
+        width: fit-content;
+        transition-duration: 0.5s;
+        transition-property: background-color, color, box-shadow;
+    }
+
+    #option-2 {
+        font-size: 1.2em;
+        cursor: pointer;
+        color: var(--midnight);
+        margin: 5px auto;
+        padding: 5px 15px;
+        text-align: center;
+        background-color: var(--babyblue);
+        border-radius: 25px;
+        width: fit-content;
+        transition-duration: 0.5s;
+        transition-property: background-color, color, box-shadow;
+    }
+
+    #option-3 {
+        font-size: 1.2em;
+        cursor: pointer;
+        color: var(--midnight);
+        margin: 5px auto;
+        padding: 5px 15px;
+        text-align: center;
+        background-color: var(--moss);
+        border-radius: 25px;
+        width: fit-content;
+        transition-duration: 0.5s;
+        transition-property: background-color, color, box-shadow;
+    }
+
+    #option-4 {
+        font-size: 1.2em;
+        cursor: pointer;
+        color: var(--midnight);
+        margin: 5px auto;
+        padding: 5px 15px;
+        text-align: center;
+        background-color: var(--nude);
+        border-radius: 25px;
+        width: fit-content;
+        transition-duration: 0.5s;
+        transition-property: background-color, color, box-shadow;
+    }
+
     .right-answer {
         width: fit-content;
     }
