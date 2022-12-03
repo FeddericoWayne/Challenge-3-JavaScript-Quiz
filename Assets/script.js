@@ -324,8 +324,6 @@ function countDown() {
         options[3].remove();
         playerScore.removeAttribute("style","display:none");
         playerScore.textContent = "Your Score: " + score;
-        saveScore.removeAttribute("style","display:none");
-        input.removeAttribute("style","display:none");
         scoreEl.remove();
         tryAgain.removeAttribute("style","display:none");
 
@@ -534,7 +532,6 @@ function wipeClean() {
     localStorage.clear();
     board.remove();
     
-
 };
 
 
