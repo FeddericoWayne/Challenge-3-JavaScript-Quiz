@@ -866,9 +866,13 @@ ol {
         background-color: var(--lavendar);
         border-radius: 25px;
         width: fit-content;
-        transition-duration: 0.5s;
-        transition-property: background-color, color, box-shadow;
     }
+    #option-1:hover {
+        background-color: var(--lavendar);
+        color: var(--midnight);
+        box-shadow: none;
+    }
+
 
     #option-2 {
         font-size: 1.2em;
@@ -880,8 +884,11 @@ ol {
         background-color: var(--babyblue);
         border-radius: 25px;
         width: fit-content;
-        transition-duration: 0.5s;
-        transition-property: background-color, color, box-shadow;
+    }
+    #option-2:hover {
+        background-color: var(--babyblue);
+        color: var(--midnight);
+        box-shadow: none;
     }
 
     #option-3 {
@@ -894,8 +901,11 @@ ol {
         background-color: var(--moss);
         border-radius: 25px;
         width: fit-content;
-        transition-duration: 0.5s;
-        transition-property: background-color, color, box-shadow;
+    }
+    #option-3:hover {
+        background-color: var(--moss);
+        color: var(--midnight);
+        box-shadow: none;
     }
 
     #option-4 {
@@ -910,6 +920,11 @@ ol {
         width: fit-content;
         transition-duration: 0.5s;
         transition-property: background-color, color, box-shadow;
+    }
+    #option-4:hover {
+        background-color: var(--nude);
+        color: var(--midnight);
+        box-shadow: none;
     }
 
     .right-answer {

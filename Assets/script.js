@@ -338,49 +338,76 @@ function countDown() {
 // For Continuing to the Next Question and Keeping Count of Total Score
 function nextQuestion(event) {
 
-   if (event.target === correctAnswer[x]) {
+   if (x !== 19 && event.target === correctAnswer[x]) {
 
         bingo.play();
         questionContainer.setAttribute("class","right-answer");
-        score+=5;
+        score += 5;
         scoreEl.textContent = "Your Score: "+score;
 
         x++;
         showQuestion();
 
 
-    } else {
+    } else if (x !==19 && event.target !== correctAnswer[x]) {
         womp.play();
         questionContainer.setAttribute("class","wrong-answer");
         scoreEl.textContent = "Your Score: "+score;
-        timeLeft-=5;
- 
+        timeLeft -= 5;
 
         x++;
         showQuestion();
 
-    };
+    } else {
 
-    if (x===19) {
-        timer.remove();
-        clearInterval(noTimeLeft,1000);
-        booyah.play();
-        timerContainer.textContent = "Booyah!";
-        timerContainer.setAttribute("style","animation: none; font-size: 2rem;");
-        congratsWomp.textContent = "Congrats! You finished in time!";
-        congratsWomp.removeAttribute("style","display:none");
-        questionEl.remove();
-        questionContainer.setAttribute("class","question-container");
-        options[0].remove();
-        options[1].remove();
-        options[2].remove();
-        options[3].remove();
-        playerScore.removeAttribute("style","display:none");
-        playerScore.textContent = "Your Score: " + score;
-        saveScore.removeAttribute("style","display:none");
-        input.removeAttribute("style","display:none");
-        scoreEl.remove();
-        tryAgain.removeAttribute("style","display:none");
+        if (x===19) {
+
+            if (event.target === correctAnswer[x]) {
+                score += 5;
+                timer.remove();
+                clearInterval(noTimeLeft,1000);
+                booyah.play();
+                timerContainer.textContent = "Booyah!";
+                timerContainer.setAttribute("style","animation: none; font-size: 2rem;");
+                congratsWomp.textContent = "Congrats! You finished in time!";
+                congratsWomp.removeAttribute("style","display:none");
+                questionEl.remove();
+                questionContainer.setAttribute("class","question-container");
+                options[0].remove();
+                options[1].remove();
+                options[2].remove();
+                options[3].remove();
+                playerScore.removeAttribute("style","display:none");
+                playerScore.textContent = "Your Score: " + score;
+                saveScore.removeAttribute("style","display:none");
+                input.removeAttribute("style","display:none");
+                scoreEl.remove();
+                tryAgain.removeAttribute("style","display:none");
+
+            } else {
+                timer.remove();
+                clearInterval(noTimeLeft,1000);
+                booyah.play();
+                timerContainer.textContent = "Booyah!";
+                timerContainer.setAttribute("style","animation: none; font-size: 2rem;");
+                congratsWomp.textContent = "Congrats! You finished in time!";
+                congratsWomp.removeAttribute("style","display:none");
+                questionEl.remove();
+                questionContainer.setAttribute("class","question-container");
+                options[0].remove();
+                options[1].remove();
+                options[2].remove();
+                options[3].remove();
+                playerScore.removeAttribute("style","display:none");
+                playerScore.textContent = "Your Score: " + score;
+                saveScore.removeAttribute("style","display:none");
+                input.removeAttribute("style","display:none");
+                scoreEl.remove();
+                tryAgain.removeAttribute("style","display:none");
+                
+            }
+
+        }
 
     };
 
