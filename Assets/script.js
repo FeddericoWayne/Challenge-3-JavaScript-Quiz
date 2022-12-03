@@ -529,13 +529,11 @@ function refresh() {
 
 // Clears Local Storage 
 function wipeClean() {
-    var confirm = window.confirm("You Sure?");
 
-    if (confirm) {
-        eraser.play();
-        localStorage.clear();
-        board.remove();
-    } 
+    eraser.play();
+    localStorage.clear();
+    board.remove();
+    
 
 };
 
