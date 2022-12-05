@@ -1,4 +1,4 @@
-# Challenge 2: Password Generator
+# Challenge 2: Code Quiz
 
 ## Description
 
