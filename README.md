@@ -1,4 +1,4 @@
-# Challenge 2: Code Quiz
+# Challenge 3: Code Quiz
 
 ## Description
 
