@@ -1,4 +1,4 @@
-# Challenge 3: Code Quiz
+# Javascripte Pop Quiz
 
 ## Description
 
