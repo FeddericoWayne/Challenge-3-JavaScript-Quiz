@@ -1,4 +1,4 @@
-# Javascripte Pop Quiz
+# JavaScript Pop Quiz
 
 ## Description
 
