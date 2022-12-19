@@ -11,7 +11,7 @@ At the very bottom of the App the user can toggle between light mode and dark mo
 This App is made for both larger and smaller viewports.
 
 
-The URL of the deployed, refactored webpage is can be found at: https://feddericowayne.github.io/Challenge-3-JavaScript-Quiz/
+The URL of the deployed, refactored webpage is can be found at: https://feddericowayne.github.io/JavaScript-Pop-Quiz/
 
 Here's a screenshot of the webpage:
 
